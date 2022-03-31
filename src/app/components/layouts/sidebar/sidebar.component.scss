@@ -1,0 +1,36 @@
+/*  .active{
+        color: white !important;
+        font-weight: 800;
+        background-color: #2fa3e6;
+        padding: 9px;
+        margin-left: -13px;
+        margin-right: -13px;
+    } 
+     */
+
+.menu_name ul li p {
+    padding: 0.8rem;
+}
+
+.menu_name ul li p:hover {
+    padding: 0.8rem;
+}
+
+// .menu_name ul li:hover p {
+//     color: white !important;
+// }
+.menu_name ul li:hover {
+    background-color: #f6f6f6 !important;
+}
+
+.menu_name ul li:hover~#plusicon {
+    display: block !important;
+}
+
+#plusicon:focus-visible {
+    outline: none;
+}
+
+#plusiconsvg:focus {
+    outline: none;
+}

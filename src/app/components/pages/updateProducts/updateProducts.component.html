@@ -1,0 +1,257 @@
+<div class="container_header">
+    <div class="container_header_rightside">
+        <ul>
+            <li>
+                <a href="">Add Products</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container_header_leftside">
+        <ul>
+            <li class="pr-0">
+                <div class="help-line"><span> GST Helpline - +91 (44) 71817070</span>
+                    <p class="help-line-text mb-0 text-right">Mon - Fri 9:00AM - 7:00PM</p>
+                </div>
+            </li>
+            <li>
+                <button id="ember262" class="btn btn-link ember-view"> <svg id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.92 506.92"
+                        class="icon icon-md align-text-bottom">
+                        <path
+                            d="M435.22 76.78A253.46 253.46 0 1076.78 435.22 253.46 253.46 0 10435.22 76.78zm-22.63 335.81A221.45 221.45 0 1199.41 99.41a221.45 221.45 0 11313.18 313.18zM347.38 276.5l-127 90.11a10 10 0 01-15.79-8.15V178.23a10 10 0 0115.79-8.16l127 90.12a10 10 0 010 16.31z"
+                            transform="translate(-2.54 -2.54)"></path>
+                    </svg>&nbsp; Getting Started </button>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div class="container_info">
+
+    <!-- <div class="add_product">
+        <div class="add_product_form">
+            <form  class="product_form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+                
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">CompanyName</span>
+                    <span class="d-flex flex-row">
+                      
+                         <select formControlName="CompanyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CompanyName.errors }">
+                             <option value=""> Select Company</option>
+                            <option *ngFor="let company of companyList" [value]="company.companyId">
+                                {{ company.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.CompanyName.errors" class="invalid-feedback errorMsg">
+                            <div *ngIf="f.CompanyName.errors.required">CompanyName is required</div>
+                        </div>
+                    </span>
+                    <span class="field_text marginLeft_10" >ProductName</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="ProductName" formControlName="ProductName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ProductName.errors }" />
+                        <div *ngIf="submitted && f.ProductName.errors" class="invalid-feedback errorMsg">
+                            <div *ngIf="f.ProductName.errors.required">ProductName is required</div>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Productcode</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Productcode" formControlName="Productcode" class="form-control"  />
+                    </span>
+                    <span class="field_text marginLeft_10" >Length</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Length" formControlName="Length" class="form-control"  />
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Width</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Width" formControlName="Width" class="form-control"  />
+                    </span>
+                    <span class="field_text marginLeft_10" >Height</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Height" formControlName="Height" class="form-control"  />
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Diameter</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Diameter" formControlName="Diameter" class="form-control"  />
+                    </span>
+                    <span class="field_text marginLeft_10" >Weight</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Weight" formControlName="Weight" class="form-control"  />
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Price</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Price" formControlName="Price" class="form-control"  />
+                    </span>
+                    <span class="field_text marginLeft_10" >Units</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Units" formControlName="Units" class="form-control"  />
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Process</span>
+                    <span class="d-flex flex-row">
+                        <input type="text" placeholder="Process" formControlName="Process" class="form-control"  />
+                    </span>
+                    <span class="field_text marginLeft_10" >Valid_Date</span>
+                    <span class="d-flex flex-row">
+                        <input type="date" placeholder="Valid_Date" formControlName="Valid_Date" class="form-control"  />
+                    </span>
+                </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text ">Notes</span>
+                    <span class="d-flex flex-row">
+                        <textarea type="text" placeholder="Notes" formControlName="Notes" class="form-control"  ></textarea>
+                    </span>
+                    <span class="field_text marginLeft_10">Product Image</span>
+                    <span class="d-flex flex-row">
+                        <input type="file"  formControlName="photos" class="form-control"  (change)="onFileChange($event)">
+                    </span>
+                    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+                   
+                </div>
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text"></span>
+                    <span>
+                        <button class="btn btn-primary mr-1">Update </button>
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </span>
+                </div>
+
+
+            </form>
+        </div>
+       
+
+    </div> -->
+    <div class="add_product">
+        <div class="add_product_form">
+            <form  class="product_form" [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="product_form">
+                <div>
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Company Name</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <select formControlName="CompanyName"  [ngClass]="{ 'is-invalid': submitted && f.CompanyName.errors }">
+                                <option value=""> Select Company</option>
+                                <option *ngFor="let company of companyList" [value]="company.companyId">
+                                    {{ company.name }}
+                                </option>
+                            </select>
+                            <br>
+                            <div *ngIf="submitted && f.CompanyName.errors" class="invalid-feedback errorMsg">
+                                <div *ngIf="f.CompanyName.errors.required">CompanyName is required</div>
+                            </div>
+                        </span>
+                        
+                        <span class="field_text marginLeft_10">Product Name</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="ProductName" formControlName="ProductName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ProductName.errors }" />
+                            <br>
+                            <div *ngIf="submitted && f.ProductName.errors" class="invalid-feedback errorMsg">
+                                <div *ngIf="f.ProductName.errors.required">ProductName is required</div>
+                            </div>
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Primary Contact</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="Productcode" formControlName="Productcode" class="form-control"  />
+                        </span>
+                            
+                        
+                            <span class="field_text marginLeft_10">Length</span>
+                            <span class="d-flex flex-row primary_cont">
+                                <input type="text" placeholder="Length" formControlName="Length" class="form-control"  />
+                            </span>
+
+                            
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Height</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="Height" formControlName="Height" class="form-control"  />
+                        </span>
+                            
+                        
+                            <span class="field_text marginLeft_10">Diameter</span>
+                            <span class="d-flex flex-row primary_cont">
+                                <input type="text" placeholder="Diameter" formControlName="Diameter" class="form-control"  />
+                            </span>
+
+                            
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Weight</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="Weight" formControlName="Weight" class="form-control"  />
+                        </span>
+                            
+                        
+                            <span class="field_text marginLeft_10">Units</span>
+                            <span class="d-flex flex-row primary_cont">
+                                <input type="text" placeholder="Units" formControlName="Units" class="form-control"  />
+                            </span>
+
+                            
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Valid Date</span>
+                        <span class="d-flex flex-row primary_cont ">
+                            <input type="date" placeholder="Valid_Date" formControlName="Valid_Date" class="form-control wi187 "  />
+                        </span>
+                            
+                        
+                            <span class="field_text marginLeft_10">Notes</span>
+                            <span class="d-flex flex-row primary_cont">
+                                <input type="text" placeholder="Notes" formControlName="Notes" class="form-control"  />
+                            </span>
+
+                            
+                    </div>
+
+
+                </div>
+
+                <div class="upload_product_pic">
+                    <!-- <input type="file" id="myfile" name="myfile" class="myfile"> -->
+                    <input type="file"  formControlName="photos" class="myfile"  (change)="onFileChange($event)">
+                    <div class="upload_ui">
+                        <figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure><span>Choose a File...</span>
+                    </div>
+                    <div class="" style="margin-top: 10px;">
+                        <div class="d-flex flex-row mb-1">
+                            <button class="btn btn-primary mr-1 btnwi" style="background-color: #2485e8;">Add </button>
+                            <button class="btn btn-secondary" type="reset" (click)="onReset()" style="background-color: #f5a3a3;">Cancel</button>
+                        </div>
+                    </div> 
+                </div>
+                <div class="">
+                    <div class="d-flex flex-row mb-1">
+                        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
+                   </div>
+                </div>
+                           
+               
+                
+
+            </form>
+        </div>
+    
+</div>

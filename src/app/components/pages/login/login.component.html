@@ -1,0 +1,59 @@
+<div class="bg_one">
+    <div class="signin_container_1">
+        <div class="signin_container">
+            <div class="signin_box">
+                <h1 class="login_logo pb-2">Alteration</h1>
+                <div class="signin_div">
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" id="login" *ngIf="passwordTab === false">
+                        <div class="signin_head">
+                            <span id="headtitle">Sign in</span>
+                            <span id="trytitle"></span>
+                            <div class="service_name">to access <span>Jobs </span></div>
+                            <div class="fielderror"></div>
+                        </div>
+                        <input type="text" formControlName="email" placeholder="Email" class="form-control textbox textbox_div" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required" class="errorColor">Email is required</div>
+                        </div>
+                        <span *ngIf="errorMessage" class="textbox_div" style="color: red;">{{errorMessage}}</span>
+                        <button class="btn blue" id="nextbtn" tabindex="2"><span>Next</span></button>
+                        <div class="text16 pointer" id="forgotpassword"><a class="text16" routerLink="/forget-Password">Forgot Password?</a></div>
+                    </form>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" id="login" *ngIf="passwordTab === true">
+                        <div class="signin_head">
+                            <span id="headtitle">Sign in</span>
+                            <span id="trytitle"></span>
+                            <div class="service_name">Lorem Ipsum is <span>simply dummy text </span></div>
+                            <div class="fielderror"></div>
+                        </div>
+                        <input type="text" formControlName="email" placeholder="Email" class="form-control textbox textbox_div" [ngClass]="{ 'is-invalid': submitteded && f2.email.errors }" readonly />
+                        <input type="password" formControlName="password" placeholder="Password" class="form-control textbox textbox_div" [ngClass]="{ 'is-invalid': submitteded && f2.password.errors }" />
+                        <div *ngIf="submitteded && f2.password.errors" class="invalid-feedback">
+                            <div *ngIf="f2.password.errors.required" class="errorColor">Password is required</div>
+                        </div>
+
+                        <span *ngIf="errorMessage1" class="textbox_div" style="color: red;">{{errorMessage1}}</span>
+                        <button class="btn blue" id="nextbtn" tabindex="2"><span>Verify</span></button>
+                    </form>
+
+                    <div class="line"></div>
+                    <div class="signin_fed_text">Sign in using</div>
+                    <img style="width: 50%;" src="../../../../assets/images/login_via.png" />
+                </div>
+            </div>
+            <div class="rightside_box">
+                <div class="illustration_img"></div>
+                <div class="login_text">
+                    <div class="pwless_head">The result of changing something</div>
+                    <div class="pwless_text">If you start the day not really expecting substantial change, but anticipating some small new revelation or some small alteration, then over time you're able to find them in more places.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="signuplink">Don't have a Alteration account? <a routerLink="/registration">Sign Up Now</a></div>
+    </div>
+</div>
+
+<ngx-spinner bdColor="rgba(0,0,0,0.4)" size="default" color="#fff" type="ball-elastic-dots" [fullScreen]="true">
+</ngx-spinner>

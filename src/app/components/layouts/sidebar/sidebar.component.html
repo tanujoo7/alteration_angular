@@ -1,0 +1,173 @@
+<div class="sidebar" #sidebar>
+    <div class="menu_name">
+        <!-- <ul style="width: 100%; padding-top: 10px;">
+            <li>
+                <a href="#" routerLink="/dashboard" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-tachometer"
+                        aria-hidden="true"></i><span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="#" routerLink="/userroles" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-user" aria-hidden="true"></i><span>User &
+                        Roles</span></a>
+            </li>
+
+        </ul> -->
+        <ul style="width: 100%; padding-top: 10px;">
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <a routerLink="/dashboard" id="ember119" class="active ember-view nav-item">
+                    <p>
+                        <!----><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon lpanel">
+                            <path
+                                d="M256 180c8.8 0 16-7.2 16-16v-22c0-8.8-7.2-16-16-16s-16 7.2-16 16v22c0 8.8 7.2 16 16 16zM123 320h-21c-8.8 0-16 7.2-16 16s7.2 16 16 16h21c8.8 0 16-7.2 16-16s-7.2-16-16-16zM411 320h-21c-8.8 0-16 7-16 15.8s7.2 16 16 16h21c8.8 0 16-7.2 16-16s-7.2-15.8-16-15.8zM272 336.5v-64.6c0-8.8-7.2-16-16-16s-16 7.2-16 16v64.6c-10.3 5.7-17.4 16.9-17.4 29.7 0 18.7 14.9 33.8 33.4 33.8s33.4-15.1 33.4-33.8c0-12.8-7.1-24-17.4-29.7zM155.7 195.9c-6.1-6.4-16.2-6.7-22.6-.6-6.4 6.1-6.7 16.2-.6 22.6l14.7 15.4c6.1 6.4 16.2 6.7 22.6.6 6.4-6.1 6.7-16.2.6-22.6l-14.7-15.4zM379 197.4c-6.1-6.4-16.2-6.6-22.6-.5l-16.3 15.6c-6.4 6.1-6.6 16.2-.5 22.6 6.1 6.4 16.2 6.6 22.6.5l16.3-15.6c6.4-6.1 6.6-16.2.5-22.6z">
+                            </path>
+                            <path
+                                d="M436.7 122.8C388.4 74.6 324.3 48 256 48S123.6 74.6 75.3 122.8C27.1 171.1.5 231 .5 299.3c0 64.6 16.6 112.8 59.1 158.7 4.7 5.1 11.4 6 18.3 6H438c7.1 0 13.8-1 18.5-6.2 42-45.8 55-94.1 55-158.5 0-68.3-26.5-128.2-74.8-176.5zm6.2 298.2c-4.6 7-12.5 11.2-20.9 11.2L90 432c-8.4 0-16.3-2.9-20.9-10-23.8-36.1-36.6-78.4-36.6-122.7 0-59.7 23.2-115.8 65.4-158C140.2 99.1 196.3 80 256 80s115.8 19 158.2 61.2c42.2 42.3 65.5 98.4 65.5 158.1 0 30.4-12.8 85.5-36.8 121.7z">
+                            </path>
+                        </svg> Dashboard
+                    </p>
+                    <!---->
+                </a>
+                <!--  <a routerLink="/dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Dashboard</span>
+                </a> -->
+            </li>
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <!-- <a routerLink="/userroles"><i class="fa fa-user" aria-hidden="true"></i><span>User & Roles</span>
+                </a> -->
+                <a routerLink="/userroles" id="ember119" class="active ember-view nav-item">
+                    <p>
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm lpanel">
+                            <path
+                                d="M487.1 336.8c-15.8-19.2-38-30.2-66-32.5-20.9-5.7-43.2-16.3-47-22.3-1.5-6.5 5.7-26.2 15.4-41.9 7.2-7.4 26.7-29.5 25-52.9-.5-7.2-2.9-13.9-7-19.5 2.3-17.1 3.5-50.7-16.5-76.5-16.7-21.5-43.2-32.5-78.8-32.5-19.9 0-37 3.4-51.1 10.1 11.2 5.4 20.5 12.8 27.9 22.3 1.9 2.4 3.5 4.9 5 7.4 5.5-.9 11.5-1.4 18-1.4 23 0 39.1 5.8 48.2 17.3 16 20.5 7.8 54.3 7.7 54.5l-3.2 12.8 10.7 7.7c.2.2.5.3.6.5.3 4.8-7.8 16.9-15.1 23.9l-1.6 1.6-1.2 2c-.2.5-7 11.1-13 24.7-9.3 20.9-11.8 37.6-7.8 51.1 1.9 6.3 5.5 12.1 11.1 17.6 11.5 4.3 21.5 10.7 30.1 19.1 1 .5 2.1.9 3.2 1.4 15.9 6.7 30.8 10.7 31.4 10.8l1.8.5 1.8.2c18 1.2 31.3 7.4 40.7 18.7 12.2 14.8 15.5 35.7 16.2 50.1h-63.5c.2 4.8.1 9.1 0 12.5l-.9 26.1h102l.9-26.1c.9-18.1-.7-57.9-25-87.3z">
+                            </path>
+                            <path
+                                d="M399.6 450H2.8l-2-16.9C.5 430.6-6 374.8 25.2 337c16-19.4 38.3-30.3 66.3-32.6 20.9-5.6 43.4-16 47.1-22 1.6-7.1-6.6-27.7-15.5-42.1-7.2-7.4-26.7-29.6-25-52.9.5-7.2 2.9-13.9 7-19.5-2.4-17.2-3.5-50.7 16.5-76.5 16.7-21.6 43.3-32.5 79-32.5 35.6 0 62.1 11 78.8 32.5 20 25.9 18.7 59.4 16.5 76.5 4.1 5.6 6.5 12.3 7 19.5 1.6 23.4-17.8 45.5-25 52.9-9.6 15.7-16.9 35.4-15.4 41.9 3.8 6 26 16.6 47 22.3 27.9 2.3 50.1 13.3 66 32.5 24.3 29.4 25.9 69.2 25.2 87.1l-1.1 25.9zM38.8 411.3h323.3c-.7-14.4-4.1-35.3-16.2-50.1-9.4-11.3-22.7-17.5-40.7-18.7l-1.8-.2-1.8-.5c-.6-.2-15.5-4.1-31.4-10.8-25.5-10.8-40-23.2-44.4-38-4-13.5-1.4-30.1 7.8-51.1 6-13.6 12.8-24.2 13-24.7l1.2-2 1.6-1.6c7.2-7 15.4-19.1 15.1-23.9-.2-.2-.4-.2-.6-.5l-10.7-7.7 3.2-12.8c.2-.2 8.3-34-7.7-54.5-9-11.5-25.2-17.3-48.2-17.3-23.2 0-39.6 5.9-48.5 17.6-15.8 20.5-7.7 54-7.6 54.4l3.4 12.8-10.7 7.7c-.2.2-.5.4-.6.5-.2 4.1 6.5 15.7 15.1 24.1l1.6 1.6 1.2 2c.2.5 7.1 11.2 13.1 24.8 9.3 21.1 11.8 37.8 7.8 51.1-4.3 14.8-18.9 27.2-44.5 37.8-15.9 6.6-30.9 10.5-31.5 10.6l-1.6.5-1.6.2c-18.2 1.2-31.5 7.4-40.9 18.7-12.4 14.8-15.8 35.6-16.4 50z">
+                            </path>
+                        </svg> User & Roles
+                    </p>
+                </a>
+
+            </li>
+            <li *ngIf="currentUrl=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <a routerLink="/profile" class="active ember-view nav-item">
+                    <p>
+                        <i class="fa fa-user-circle" aria-hidden="true"></i> Profile
+                    </p>
+                </a>
+            </li>
+
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <div id="ember119" class="active ember-view nav-item" style="display: flex;">
+                    <a routerLink="/customer" style="width: 100%;">
+                        <p>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon lpanel">
+                                <path
+                                    d="M494.2 512H17.6c-8.4 0-15.5-6.5-16.1-14.9-1.5-18.3-3.6-81 31.4-123.1 19.2-23.3 46.1-36.6 79.9-39.4h.5c5.8-1.8 20-6.6 34.6-13.5 31.3-14.7 35.6-24.8 36.1-26.6 2.9-10.2-3.7-36.5-22.2-67.4l-.2-.3c-7.9-8.1-32.6-36-30.7-63.4.5-8.7 3.8-17 9.6-23.5l.3-.4-.1-.5c-3.6-23.1-6-66.9 19.5-99.8C180.5 13.1 212.8 0 256.5 0c43.5 0 75.7 13.1 95.7 39 11.7 15.2 18.8 34.4 21 57 1.7 17.5.1 33.1-1.5 43.1l-.1.4.3.3c5.6 6.5 8.8 14.3 9.5 23.2v.2c.8 10.9-2.5 23-9.9 36.1-5.4 9.4-12.7 19.4-20.8 27.8l-.2.2s0 .1-.1.1c-11.4 18.6-26.4 53-22.1 67.9.5 1.8 4.9 11.8 36.1 26 16.3 7.3 31.6 12.1 34.6 13h.2c45.5 3.7 79.1 27.1 97 67.7 13.4 30 15.4 62.8 14.7 85v.1c-.1 2.4-.2 5.3-.4 7.9 0 .6-.1 1.1-.1 1.5-.4 8.7-7.5 15.5-16.2 15.5zm16.2-16.2v0zM33.3 480h445.4c0-16.3-1.9-42.2-11.9-64.7-13.2-29.8-36-45.7-69.9-48.5l-1.6-.1c-1.3-.1-2.6-.3-3.8-.7l-1.6-.5c-4.7-1.4-20.7-6.5-38.5-14.4-31.3-14.2-48.9-29.4-53.9-46.5-10-34.6 21.7-87.6 25.6-94l.9-1.5c.7-1.1 1.5-2.2 2.4-3.1l1.3-1.3c13-13.4 22.3-30.1 21.7-38.9-.2-2.5-1.1-3.8-1.8-4.7l-5.3-6.1c-3.1-3.7-4.5-8.4-3.6-13.2l1.3-7.9c7.1-43.2-6.9-66.8-13.2-75-13.6-17.6-37.1-26.4-70.1-26.4-33.2 0-56.9 8.9-70.5 26.6-18.7 24.2-15.4 60.3-13.2 74.7l1.3 7.9c.8 4.8-.6 9.5-3.7 13.2l-5.3 6.2c-1.2 1.3-1.7 2.7-1.8 4.5v.2c-.6 8.7 8.7 25.3 21.8 38.7l.3.3 1.3 1.4c.7.8 1.4 1.7 2 2.6l1 1.6c8.4 14 34.8 61.7 25.6 93.4-5.1 17.2-22.1 32.1-53.4 46.9-16.6 7.8-32.8 13.2-39 15.1-.1 0-.2.1-.3.1l-1.8.5c-1.2.3-2.4.6-3.6.6l-1.7.1c-24.6 2-43.9 11.4-57.4 27.7-21.6 25.2-25 63.6-25 85.2z">
+                                </path>
+                            </svg> Customers
+                        </p>
+                    </a>
+                    <div id="plusicon" style="align-self: center; position: absolute; left: 167px;" routerLink="/addCutomer/''">
+                        <svg id="plusiconsvg" style="width: 13px; padding-top: 7px; height: 22px; color: #f7f7f7; " version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs align-text-bottom">
+                            <path
+                                d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <div id="ember119" class="active ember-view nav-item" style="display: flex;">
+                    <a routerLink="/items" style="width: 100%;">
+                        <p>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon lpanel">
+                                <path
+                                    d="M496.6 160H391.2l-99-111c-9-10.7-22.2-16.9-36.2-17-14-.2-27.3 5.8-36.5 16.3L120 160H15.7C7 160 0 167.3 0 176s7 16 15.7 16h15.7L93 468.5c1.9 6.8 8.1 11.5 15.1 11.5h296.2c7 0 13.2-4.7 15.1-11.5L481 192h15.6c8.7 0 15.7-7.8 15.7-16.5s-7-15.5-15.7-15.5zM243.5 69.4c3.1-3.5 7.3-5.4 12-5.4h.2c4.7 0 9 2.1 12.1 5.7l81.6 90.3H162.6l80.9-90.6zm151 378.6H119.7l-53-256h382.8l-55 256z">
+                                </path>
+                                <path
+                                    d="M191.1 335.3h129.8c8.3 0 15.1-6.7 15.1-15.1 0-8.3-6.7-15.4-15.1-15.4H191.1c-8.3 0-15.1 7.1-15.1 15.4s6.7 15.1 15.1 15.1z">
+                                </path>
+                            </svg> Items
+                        </p>
+                    </a>
+                    <div id="plusicon" style="align-self: center; position: absolute; left: 167px;" routerLink="/addItems">
+                        <svg id="plusiconsvg" style="width: 13px; padding-top: 7px; height: 22px; color: #f7f7f7; " version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs align-text-bottom">
+                            <path
+                                d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <div id="ember119" class="active ember-view nav-item" style="display: flex;">
+                    <a routerLink="/jobs" style="width: 100%;">
+                        <p>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon lpanel">
+                                <path
+                                    d="M494.2 512H17.6c-8.4 0-15.5-6.5-16.1-14.9-1.5-18.3-3.6-81 31.4-123.1 19.2-23.3 46.1-36.6 79.9-39.4h.5c5.8-1.8 20-6.6 34.6-13.5 31.3-14.7 35.6-24.8 36.1-26.6 2.9-10.2-3.7-36.5-22.2-67.4l-.2-.3c-7.9-8.1-32.6-36-30.7-63.4.5-8.7 3.8-17 9.6-23.5l.3-.4-.1-.5c-3.6-23.1-6-66.9 19.5-99.8C180.5 13.1 212.8 0 256.5 0c43.5 0 75.7 13.1 95.7 39 11.7 15.2 18.8 34.4 21 57 1.7 17.5.1 33.1-1.5 43.1l-.1.4.3.3c5.6 6.5 8.8 14.3 9.5 23.2v.2c.8 10.9-2.5 23-9.9 36.1-5.4 9.4-12.7 19.4-20.8 27.8l-.2.2s0 .1-.1.1c-11.4 18.6-26.4 53-22.1 67.9.5 1.8 4.9 11.8 36.1 26 16.3 7.3 31.6 12.1 34.6 13h.2c45.5 3.7 79.1 27.1 97 67.7 13.4 30 15.4 62.8 14.7 85v.1c-.1 2.4-.2 5.3-.4 7.9 0 .6-.1 1.1-.1 1.5-.4 8.7-7.5 15.5-16.2 15.5zm16.2-16.2v0zM33.3 480h445.4c0-16.3-1.9-42.2-11.9-64.7-13.2-29.8-36-45.7-69.9-48.5l-1.6-.1c-1.3-.1-2.6-.3-3.8-.7l-1.6-.5c-4.7-1.4-20.7-6.5-38.5-14.4-31.3-14.2-48.9-29.4-53.9-46.5-10-34.6 21.7-87.6 25.6-94l.9-1.5c.7-1.1 1.5-2.2 2.4-3.1l1.3-1.3c13-13.4 22.3-30.1 21.7-38.9-.2-2.5-1.1-3.8-1.8-4.7l-5.3-6.1c-3.1-3.7-4.5-8.4-3.6-13.2l1.3-7.9c7.1-43.2-6.9-66.8-13.2-75-13.6-17.6-37.1-26.4-70.1-26.4-33.2 0-56.9 8.9-70.5 26.6-18.7 24.2-15.4 60.3-13.2 74.7l1.3 7.9c.8 4.8-.6 9.5-3.7 13.2l-5.3 6.2c-1.2 1.3-1.7 2.7-1.8 4.5v.2c-.6 8.7 8.7 25.3 21.8 38.7l.3.3 1.3 1.4c.7.8 1.4 1.7 2 2.6l1 1.6c8.4 14 34.8 61.7 25.6 93.4-5.1 17.2-22.1 32.1-53.4 46.9-16.6 7.8-32.8 13.2-39 15.1-.1 0-.2.1-.3.1l-1.8.5c-1.2.3-2.4.6-3.6.6l-1.7.1c-24.6 2-43.9 11.4-57.4 27.7-21.6 25.2-25 63.6-25 85.2z">
+                                </path>
+                            </svg> Jobs
+                        </p>
+                    </a>
+                    <div id="plusicon" style="align-self: center; position: absolute; left: 167px;" routerLink="/jobsadd/null">
+                        <svg id="plusiconsvg" style="width: 13px; padding-top: 7px; height: 22px; color: #f7f7f7; " version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs align-text-bottom">
+                            <path
+                                d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </li>
+
+            <li *ngIf="currentUrl !=='/profile'" [routerLinkActive]="['dashboard_active']">
+                <div id="ember119" class="active ember-view nav-item" style="display: flex;">
+                    <a routerLink="/invoices" style="width: 100%;">
+                        <p>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon lpanel">
+                                <path
+                                    d="M494.2 512H17.6c-8.4 0-15.5-6.5-16.1-14.9-1.5-18.3-3.6-81 31.4-123.1 19.2-23.3 46.1-36.6 79.9-39.4h.5c5.8-1.8 20-6.6 34.6-13.5 31.3-14.7 35.6-24.8 36.1-26.6 2.9-10.2-3.7-36.5-22.2-67.4l-.2-.3c-7.9-8.1-32.6-36-30.7-63.4.5-8.7 3.8-17 9.6-23.5l.3-.4-.1-.5c-3.6-23.1-6-66.9 19.5-99.8C180.5 13.1 212.8 0 256.5 0c43.5 0 75.7 13.1 95.7 39 11.7 15.2 18.8 34.4 21 57 1.7 17.5.1 33.1-1.5 43.1l-.1.4.3.3c5.6 6.5 8.8 14.3 9.5 23.2v.2c.8 10.9-2.5 23-9.9 36.1-5.4 9.4-12.7 19.4-20.8 27.8l-.2.2s0 .1-.1.1c-11.4 18.6-26.4 53-22.1 67.9.5 1.8 4.9 11.8 36.1 26 16.3 7.3 31.6 12.1 34.6 13h.2c45.5 3.7 79.1 27.1 97 67.7 13.4 30 15.4 62.8 14.7 85v.1c-.1 2.4-.2 5.3-.4 7.9 0 .6-.1 1.1-.1 1.5-.4 8.7-7.5 15.5-16.2 15.5zm16.2-16.2v0zM33.3 480h445.4c0-16.3-1.9-42.2-11.9-64.7-13.2-29.8-36-45.7-69.9-48.5l-1.6-.1c-1.3-.1-2.6-.3-3.8-.7l-1.6-.5c-4.7-1.4-20.7-6.5-38.5-14.4-31.3-14.2-48.9-29.4-53.9-46.5-10-34.6 21.7-87.6 25.6-94l.9-1.5c.7-1.1 1.5-2.2 2.4-3.1l1.3-1.3c13-13.4 22.3-30.1 21.7-38.9-.2-2.5-1.1-3.8-1.8-4.7l-5.3-6.1c-3.1-3.7-4.5-8.4-3.6-13.2l1.3-7.9c7.1-43.2-6.9-66.8-13.2-75-13.6-17.6-37.1-26.4-70.1-26.4-33.2 0-56.9 8.9-70.5 26.6-18.7 24.2-15.4 60.3-13.2 74.7l1.3 7.9c.8 4.8-.6 9.5-3.7 13.2l-5.3 6.2c-1.2 1.3-1.7 2.7-1.8 4.5v.2c-.6 8.7 8.7 25.3 21.8 38.7l.3.3 1.3 1.4c.7.8 1.4 1.7 2 2.6l1 1.6c8.4 14 34.8 61.7 25.6 93.4-5.1 17.2-22.1 32.1-53.4 46.9-16.6 7.8-32.8 13.2-39 15.1-.1 0-.2.1-.3.1l-1.8.5c-1.2.3-2.4.6-3.6.6l-1.7.1c-24.6 2-43.9 11.4-57.4 27.7-21.6 25.2-25 63.6-25 85.2z">
+                                </path>
+                            </svg> Invoices
+                        </p>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!-- <li [routerLinkActive]="['dashboard_active']" style="display: flex;justify-content: space-between;">
+                <a style="width:90%"><i class="fa fa-building-o" aria-hidden="true"></i><span>Company</span> </a>
+                <a style="width:10%"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+            </li>
+            <li [routerLinkActive]="['dashboard_active']">
+                <a><i class="fa fa-user" aria-hidden="true"></i><span>Users</span>
+                </a>
+            </li>
+            <li [routerLinkActive]="['dashboard_active']" style="display: flex;justify-content: space-between;">
+                <a style="width:90%"><i class="fa fa-product-hunt" aria-hidden="true"></i><span>Products</span>
+                </a>
+                <a style="width:10%"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+            </li> -->
+        <!-- <li [routerLinkActive]="['dashboard_active']" style="display: flex;justify-content: space-between;">
+                <a routerLink="/company" style="width:90%"><i class="fa fa-building-o"
+                        aria-hidden="true"></i><span>Company</span> </a>
+                <a routerLink="/addCompany" style="width:10%"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+            </li>
+            <li [routerLinkActive]="['dashboard_active']">
+                <a routerLink="/users"><i class="fa fa-user" aria-hidden="true"></i><span>Users</span>
+                </a>
+            </li>
+            <li [routerLinkActive]="['dashboard_active']" style="display: flex;justify-content: space-between;">
+                <a routerLink="/products" style="width:90%"><i class="fa fa-product-hunt"
+                        aria-hidden="true"></i><span>Products</span>
+                </a>
+                <a routerLink="/addProducts" style="width:10%"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+            </li>
+
+        </ul>-->
+    </div>
+    <div class="toggle" #toggle (click)="toggleMenu()">
+        <i style="font-size: 30px;color: black;" class="fa fa-angle-left" aria-hidden="true"></i>
+    </div>
+</div>

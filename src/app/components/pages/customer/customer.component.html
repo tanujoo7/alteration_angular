@@ -1,0 +1,421 @@
+<div class="container_header">
+    <div class="container_header_rightside">
+        <ul>
+            <li>
+                <a href="">Active Customers</a>
+            </li>
+            <!--  <li>
+                <a href="" class="text-blue ">Recent Update</a>
+            </li> -->
+        </ul>
+    </div>
+
+    <button style="width: 60px; color: #fff; height: 28px; padding: 0px !important; font-weight: 400; font-size: 14px; margin-right: 20px;background-color: #bb3b25 !important; border-color: #bb3b25  !important; " id="ember408" routerLink="/addCutomer/''"
+        class="btn btn-primary" type="button">
+        <span>
+            <svg style="margin: 0; height: 16px; width: 10px;" version="1.1" id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve"
+                class="icon icon-xsmall align-text-bottom">
+                <path
+                    d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                </path>
+            </svg>
+        </span> New
+    </button>
+</div>
+
+
+<ngx-spinner bdColor="rgba(0,0,0,0.4)" size="default" color="#fff" type="ball-elastic-dots" [fullScreen]="true">
+</ngx-spinner>
+
+<table id="ember494" class="table" style="font-weight:  300;">
+    <thead>
+        <tr style="border-bottom: 1px solid #f0f0f0;">
+            <!---->
+            <th id="ember769" class="cursor-pointer bulk-selection-cell ember-view">
+                <!-- <input id="ember770" class="ember-checkbox ember-view cursor-pointer" type="checkbox"
+                    aria-checked="false"> -->
+            </th>
+            <th class=" text-left  sortable " style="width:18%;font-weight: 400; padding-left: 30px;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        NAME
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="color: #d64830!important; font-weight: 500; width:15%">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">COMPANY NAME
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">EMAIL
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">WORK PHONE
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">RECEIVABLES
+
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">UNUSED CREDITS
+
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class="text-left">
+                <div class="position-relative ">
+                    <div class="float-left over-flow">
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </th>
+            <!---->
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr id="ember568" class="table-active ember-view" style="border-bottom: 1px solid #f0f0f0;" *ngFor="let customerInfo of customerList">
+            <td id="ember769" class="cursor-pointer bulk-selection-cell ember-view">
+                <input id="ember770" class="ember-checkbox ember-view cursor-pointer" type="checkbox" aria-checked="false">
+            </td>
+            <td class=" text-left  sortable " (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;" style="font-weight: 300; width:18%;padding-left: 45px; color: #2485e8; font-weight: 500;">
+                <div class="position-relative row">
+
+                    <div class="float-left over-flow" title="User Details">
+                        {{customerInfo?.firstname}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{customerInfo?.companyname}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{customerInfo?.email}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{customerInfo?.phonenumber}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        ₹0.00 {{customerInfo?.receivables}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td style="vertical-align: middle;" (click)="mySettingsOpen(customerInfo);selectedUser = customerInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        <div style="display: flex;justify-content: space-between; cursor: pointer;">
+                            <div> ₹0.00 {{customerInfo?.unuservredits}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                <div id="ember772" style="display: none;">
+                    <label class="dropdown">
+                        <input type="checkbox" class="dd-input" id="test">
+                        <ul class="dd-menu" style="position: absolute;top: 43px;left: -80px;">
+                            <li (click)="selectedUser = customerInfo; gotoAddCutomer(customerInfo)">
+                                <svg style="padding: 0; margin: 0px 2px; height: 16px;" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                    xml:space="preserve" class="icon icon-sm align-text-bottom">
+                                    <path
+                                        d="M469.6 42.4C420.9-6.2 382.3-.2 378.1.7l-4.8 1L42.1 332.8c-3.4 3.4-5.8 7.8-6.8 12.5L1.3 506c-.6 2.8 1.9 5.3 4.7 4.7l160.7-34.1c4.7-1 9.1-3.4 12.5-6.8l331.2-331.2.9-4.9c.9-4.1 6.7-42.8-41.7-91.3zM43.2 464l20.2-95.2c.5-2.3 2.8-3.7 5.1-3 12.4 3.9 29.7 12 46.3 28.6 17.1 17.1 26 35.8 30.5 49.2.8 2.3-.6 4.7-3 5.2l-94.4 20c-2.8.6-5.3-1.9-4.7-4.8zm135.6-39.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8C121.2 355 104 345 89.4 339c-2.6-1.1-3.3-4.5-1.3-6.5l150.8-150.8 95.5-95.5c1-1 2.3-1.4 3.7-1.1 11.8 2.5 34.1 9.9 55.1 30.9 21.4 21.4 29.9 45.4 33.2 58.2.3 1.4 0 2.8-1 3.8l-95.1 95.1-151.5 151.5zm278.4-278.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8-16.5-16.5-33.7-26.5-48.3-32.5-2.6-1.1-3.3-4.5-1.3-6.5L387 33.7c.9-.9 2-1.3 3.2-1.2 9.8 1 30.3 6.6 56.5 32.8 26.2 26.2 31.8 46.8 32.8 56.5.1 1.2-.3 2.4-1.2 3.2l-21.1 21.2z">
+                                    </path>
+                                </svg>
+                                Edit
+                            </li>
+                        </ul>
+                        <a style="position: absolute;right: 0; top: -5px;">
+
+                            <div> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+                                    viewBox="0 0 512 512" xml:space="preserve"
+                                    class="icon icon-xlg icon-theme-fill icon-rounded">
+                                    <path id="Oval-50_2_"
+                                        d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm118.6 246l-96.8 95.8c-6 5.9-13.9 8.9-21.8 8.9s-15.8-3-21.8-8.9L137.4 246c-8.2-8.2-8.3-21.5-.2-29.7 8.1-8.2 21.5-8.3 29.7-.2l89.1 88.1 89.1-88.1c8.2-8.2 21.5-8.1 29.7.2 8.2 8.2 8.1 21.5-.2 29.7z">
+                                    </path>
+                                </svg> </div>
+                        </a>
+
+                    </label>
+                </div>
+            </td>
+
+            <!---->
+            <!-- <td style="vertical-align: middle;" (click)="mySettingsOpen(customerInfo); selectedUser = customerInfo;"> <svg
+                        version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                        xml:space="preserve" class="icon icon-sm align-middle cursor-pointer">
+                    </svg>
+                </td> -->
+            <!-- <td style="vertical-align: middle;" (click)="selectedUser =customerInfo; mySettingsOpen(customerInfo);"> <svg
+                        version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                        xml:space="preserve" class="icon icon-sm align-middle cursor-pointer">
+
+                        <path
+                            d="M258.3 149.8c-57.3 0-103.9 46.6-103.9 103.9 0 57.3 46.6 103.9 103.9 103.9s104-46.6 104-103.9c0-57.3-46.6-103.9-104-103.9zm0 175.9c-39.7 0-71.9-32.3-71.9-71.9 0-39.7 32.3-71.9 71.9-71.9 39.7 0 71.9 32.3 71.9 71.9.1 39.6-32.2 71.9-71.9 71.9z">
+                        </path>
+                        <path
+                            d="M491.4 202.9l-38.7-14c-3-9.5-6.6-18.6-10.7-27.1l18.3-38.3c5.6-11.8 3.2-26-6-35.2l-30.5-30.6c-9.3-9.3-23.4-11.7-35.2-6.1l-38.2 18.1c-8.1-3.8-16.7-7.1-27.1-10.3l-14-38.7C304.9 8.5 293.2.4 280.2.4h-43.6c-12.9 0-24.6 8.2-29.1 20.4l-14.1 38.8c-9.7 3.1-18.8 6.7-27.1 10.7l-38.2-18.4c-11.8-5.6-26-3.2-35.2 6L62.1 88.3c-9.3 9.3-11.7 23.5-6 35.3l18 37.8c-5.2 9.8-9.2 18.7-12.2 27l-40.8 14.2C8.6 207 .2 218.7.2 232v43.3c0 13.2 8.4 25 20.7 29.2l40.9 14.3c3.1 8.8 6.9 17.7 11.7 27.1L55.6 384c-5.6 11.9-3.2 26 6.2 35.2L92.6 450c9.2 9.2 23.4 11.7 35.2 6l38.1-18.1c9.7 5.2 18.6 9.2 27.1 12.2l14.2 40.8c4.3 12.5 16 20.8 29.3 20.8h43.3c13.2 0 25-8.4 29.3-20.8l14.2-40.9c8.9-3.1 18-7 27.1-11.7l38.1 17.9c11.8 5.6 26 3.1 35.3-6.2l30.7-30.9c9.2-9.2 11.6-23.3 6-35.2l-18.2-38.4c3.8-8 7.1-16.6 10.3-27.1l38.6-14c12.3-4.3 20.6-16 20.6-29V232c0-13-8.2-24.7-20.4-29.1zm-11.6 71.8l-38.5 14c-9.2 3.3-16.1 10.6-19 19.9v.1c-2.8 9.3-5.7 16.8-8.9 23.5-4.1 8.5-4.2 18.3-.1 26.7l18.2 38.3-29.7 29.9-38-17.9c-8.9-4.1-18.8-4-27.3.5-8 4.1-16 7.6-23.7 10.3-8.9 2.9-16.1 10.1-19.3 19.1l-14.2 40.7h-41.8L223.2 439c-3.1-8.9-10-15.9-19-19-7.3-2.6-15-6.1-23.7-10.7s-19.1-4.8-27.9-.6l-37.9 18-29.9-29.8 17.9-37.9c4.1-8.9 4-18.9-.5-27.3-4.3-8.3-7.7-16.1-10.3-23.9-3.1-8.9-10.2-16-19.1-19.1l-40.6-14.2v-41.8l40.7-14.2c8.9-3.1 15.9-10 19-18.9 2.5-7 6-14.7 10.7-23.5 4.6-8.6 4.9-19 .6-27.9l-18-37.8L115 80.9l38 18.3c8.5 4.1 18.6 4 27.1-.2 7.1-3.5 15.1-6.6 23.6-9.3 9-2.9 16.3-9.9 19.6-19l14-38.5h42.1l13.9 38.4c3.3 9.2 10.6 16.1 19.9 19h.1c9.2 2.8 16.6 5.6 23.4 8.9 8.6 4.1 18.3 4.1 26.8.1l38-18 29.5 29.6-18.2 38-.1.2c-4 8.7-4 18.5.2 26.9 3.6 7.4 6.7 15.3 9.3 23.5 2.7 9 9.8 16.4 18.9 19.8l38.5 14v42.1z">
+                        </path>
+                    </svg> </td> -->
+        </tr>
+        <!---->
+    </tbody>
+</table>
+<div style="text-align: center; margin-top: 3px; font-family: fantasy;" *ngIf="showError">
+    <p>{{showError}}</p>
+</div>
+
+
+<!-- setting Click -->
+<div class="profile_info" id="myProfile" *ngIf="this.settingspage">
+    <div class="fill user-details">
+        <div class="user-details-header">
+            <span (click)="mySettingsClose()" class="close-details mt-3" data-ember-action="" data-ember-action-624="624">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                    xml:space="preserve" class="icon icon-xs">
+                    <path
+                        d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                    </path>
+                </svg>
+            </span>
+            <div class="header no-border d-flex">
+                <h3 class="over-flow header-title">
+                    <div class="btn-group visible-1279-inline-block">
+                        <!-- <button class="btn btn-secondary btn-back"
+                            data-ember-action="" data-ember-action-2810="2810">
+                           <svg version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                xml:space="preserve" class="icon icon-sm align-text-bottom">
+                                <path
+                                    d="M370 508c19.3 0 28.9-23.4 15.2-37.1L167.9 255.5 385.2 40.1C398.9 26.4 389.3 3 370 3c-5.7 0-11.1 2.2-15.2 5.3L122 239.1c-8.5 9.5-8.5 23.3 0 31.8l232.8 230.9c4.1 4 9.5 6.2 15.2 6.2z"
+                                    id="Layer_2_2_"></path>
+                            </svg> 
+                        </button>-->
+                    </div>
+                    <!---->
+                    <!---->{{selectedUser?.name}}
+                </h3>
+                <div>
+                    <div class="btn-toolbar">
+                        <!---->
+                        <div class="btn-group"><button class="btn btn-secondary" data-ember-action="" data-ember-action-2811="2811" (click)="gotoAddCutomer(selectedUser)">Edit</button></div>
+                        <div class="btn-popover-contain"> <button id="ember2812" class="tooltip-container ember-view btn btn-secondary" type="button"> <svg version="1.1"
+                                    id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                    xml:space="preserve" class="icon icon-sm align-text-bottom">
+                                    <path
+                                        d="M262.4 512c-35.7 0-64.2-10.5-84.9-31.4-24.7-24.9-37.1-63.8-36.8-115.6.2-32.6-.3-248.7-1.4-268.1-.9-15.9 4.8-41.6 23.6-61.5 11.4-12 32-26.3 66-26.3 30.3 0 55.1 15.7 69.8 44.2 10.1 19.7 12.2 38.8 12.4 40.9l.1.9v.9l.5 236.9v.5c-1 19.2-15.9 47.6-53 47.6h-.7c-39.1-.4-53.7-30.4-56-46.2l-.2-1.3V179.6c0-10.2 8.3-18.5 18.5-18.5s18.5 8.3 18.5 18.5v150.5c.4 1.5 1.4 4.4 3.6 7.2s6.2 6.5 16 6.6c9.2.1 12.4-3.2 14.1-6 1.6-2.6 2.2-5.6 2.3-6.3l-.7-234.5c-.4-3-2.4-15.6-8.8-27.6-8.3-15.7-20.2-23.3-36.4-23.3-16.7 0-29.8 5-39.1 14.8-10.7 11.3-14 26.6-13.6 34 1.2 21.6 1.6 244.3 1.4 270.3-.2 41.6 8.5 71.7 26 89.3 13.5 13.6 33.2 20.4 58.7 20.4 17.2 0 31.8-5.9 43.5-17.7 18.9-18.9 30.1-53.4 30-92.2 0-19.6-.1-193.2-.1-250.9 0-10.2 8.3-18.5 18.5-18.5s18.5 8.3 18.5 18.5c0 57.6.1 231.2.1 250.8.1 49.1-14.8 92.3-40.8 118.4-18.6 18.7-42.7 28.6-69.6 28.6z">
+                                    </path>
+                                </svg> </button>
+                            <div id="ember2814" class="popover-container ember-view">
+                                <div id="ember2815" class="d-none popover bs-popover-bottom ember-view attachments-invoice pop-over-div" style="inset: 100% auto auto -315px; visibility: visible;">
+                                    <!---->
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <div id="ember2816" class="dropdown ember-view btn-group"><button id="ember2817" class="dropdown-toggle ember-view btn-primary btn" style="height: 35px; margin-right: 12px;font-size: 13px;color: white; background-color: #bb3b25 !important;">
+                                New Transaction
+                            </button>
+                            <!--  <div id="ember2818" class="dropdown-menu dropdown-menu-right ember-view">
+                                <div class="fltheader">Sales</div>
+
+                            </div> -->
+                        </div>
+                        <!---->
+                        <!--  <div id="ember2837" class="dropdown open ember-view btn-group"><button id="ember2838"
+                                class="dropdown-toggle ember-view btn btn-secondary"> More </button>
+                            <div id="ember2839" class="dropdown-menu show dropdown-menu-right ember-view multi-level">
+
+                            </div>
+                        </div> -->
+                        <div id="ember626" class="dropdown ember-view btn-group align-self-center ml-auto"><span id="ember627" class=" "> <label class="dropdown">
+                                    <div class="dd-button dropdown-toggle ember-view btn btn-secondary"
+                                        style="font-size: 13px;  padding-left: 6px;">
+                                        more
+                                    </div>
+
+                                    <input type="checkbox" class="dd-input" id="test">
+
+                                    <ul class="dd-menu">
+                                        <li (click)="deleteCutomer(selectedUser)">Delete</li>
+                                    </ul>
+
+                                </label> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="sub-tab">
+            <ul class="nav nav-tabs nav-tabs-dashed">
+                <li id="ember386" class="active ember-view nav-item"><a id="ember387" class="active ember-view nav-link Hover_and_Active">Overview</a></li>
+                <li id="ember388" class="ember-view nav-item"><a id="ember389" class="ember-view nav-link Hover_and_Active">Comments</a>
+                </li>
+                <li id="ember388" class="ember-view nav-item"><a id="ember389" class="ember-view nav-link Hover_and_Active">Transactions
+                        Activities</a></li>
+                <li id="ember388" class="ember-view nav-item"><a id="ember389" class="ember-view nav-link Hover_and_Active">Mails
+                        Activities</a></li>
+                <li id="ember388" class="ember-view nav-item"><a id="ember389" class="ember-view nav-link Hover_and_Active">Statement
+                        Activities</a></li>
+
+            </ul>
+        </div>
+        <div id="ember969" class="ember-view scroll-y noscroll-x fill body scrollbox pb-0">
+            <div id="ember970" class="ember-view">
+                <!---->
+                <div class="details fill-container noscroll-x" id="contact-details">
+                    <div class="details-info">
+                        <div class="group">
+                            <div>{{selectedUser?.name}}</div>
+                            <hr>
+                            <div class="person row">
+                                <div class="col-lg-2"><img src="https://secure.gravatar.com/avatar/c351d471ec3a1fa09cfb925a22c503e9?&amp;d=mm" class="cp-pic"></div>
+                                <div class="col-lg-10" id="636665000000016015"> <strong>
+                                        {{selectedUser?.firstname}}</strong>
+                                    <br> {{selectedUser?.email}} <br>
+                                    <!---->
+                                    <!----><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 40 40" xml:space="preserve" class="icon icon-xs">
+                                        <path
+                                            d="M7.8 6.5c0-.7.1-1.3.3-1.9.2-.7.4-1.3.8-1.8.4-.7 1-1.3 1.8-1.6.5-.2 1-.4 1.5-.5.5-.1.9-.3 1.4-.3.9-.1 1.6.1 2.1 1.2.3.8.6 1.5 1 2.3.3.7.6 1.4.9 2.2.3.7.6 1.4.8 2.1.3.9.1 1.6-.8 2.3-1 .7-2.1 1.2-3.2 1.7-.1.1-.3.1-.4.1-.2.1-.3.3-.2.4.3.8.6 1.6 1 2.3.5 1 1.1 2.1 1.7 3.1.9 1.5 1.8 2.9 2.8 4.3.9 1.2 1.8 2.4 2.9 3.5.3.3.4.3.7 0 .8-.9 1.7-1.5 2.7-2.2.4-.3.8-.4 1.3-.5.6-.1 1.1.1 1.5.5.6.5 1.1 1.1 1.6 1.7 1.1 1.2 2.2 2.4 3.3 3.5.6.6.7 1.4.3 2.2-.2.4-.5.8-.8 1.2-.5.6-1.1 1.1-1.7 1.7-.4.3-.9.5-1.4.6-.4.1-.9.1-1.3.1-.7 0-1.4-.1-2.1-.3-1.6-.5-3-1.3-4.4-2.2-1.4-.9-2.6-1.9-3.8-3.1-.9-.9-1.7-1.8-2.5-2.7-.9-1.1-1.8-2.2-2.5-3.4-.7-1.1-1.3-2.1-1.9-3.3-.4-.9-.9-1.8-1.3-2.7-.3-.6-.5-1.3-.7-1.9-.2-1.1-.4-1.8-.6-2.5-.2-.7-.3-1.3-.4-2-.2-1.3-.4-3-.4-4.1z">
+                                        </path>
+                                    </svg> {{selectedUser?.phonenumber}}<br>
+                                    <!---->
+                                    <!---->
+                                    <!---->
+                                    <div class="line-seperator"><small class="coll"><a href="#" data-ember-action=""
+                                                data-ember-action-972="972">Edit</a></small> <small class="coll"> <a
+                                                href="#" data-ember-action="" data-ember-action-973="973">Send Email</a>
+                                        </small>
+                                        <!----><small class="coll"><a href="#" data-ember-action=""
+                                                data-ember-action-974="974">Delete</a></small>
+                                        <!---->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ember975" class="ember-view">
+                            <!---->
+                            <!---->
+                            <div id="ember976" class="ember-view">
+                                <div id="ember977" class="ember-view toggle-header cursor-pointer">
+                                    <div class="uppercase font-weight-light">Address </div>
+                                </div>
+
+                                <div id="ember978" class="ember-view collapse show">
+                                    <div class="group">
+                                        <div>Billing Address</div>
+                                        <div id="ember979" class="popovercontainer address-group ember-view">
+
+                                            <p><span class="text-muted" *ngIf="selectedBillingAddress.length > 0 && selectedBillingAddress != '' ">{{selectedBillingAddress}}</span> -
+                                                <a class="font-xs" href="#" data-ember-action="" data-ember-action-980="980">Add new
+                                                    address</a>
+                                            </p>
+                                        </div>
+                                        <div>Shipping Address</div>
+                                        <div id="ember981" class="popovercontainer address-group ember-view">
+                                            <p><span class="text-muted" *ngIf="selectedShippingAddress.length > 0 && selectedShippingAddress != '' ">{{selectedShippingAddress}}</span> -
+                                                <a class="font-xs" href="#" data-ember-action="" data-ember-action-982="982">Add new
+                                                    address</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="entity-details">
+                        <div id="ember1005" class="ember-view">
+                            <div class="comments-history whats-next-container clearfix m-0">
+                                <div class="row">
+                                    <div class="col-lg-1"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.54 499.54" class="icon icon-xxxlg">
+                                            <g id="Layer_2" data-name="Layer 2">
+                                                <g id="Layer_1-2" data-name="Layer 1">
+                                                    <circle cx="249.77" cy="249.77" r="249.77" fill="#ffefdd"></circle>
+                                                    <path fill="#f9a13c"
+                                                        d="M299.85 371.97l-.54.48-.5.43-2.94 2.61-2.33 2.06-.14.12-.75.67-2.15 1.9-1.3 1.15-.57.5-2.66 2.36-.54.47-.69.61-2.21 1.96-.38.33-1.98 1.75-.13.11-.02.02-.72.64-.63.55-2.82 2.49-2.74 2.43-.09.07-.4.35-.57.51-2.87 2.54-.07.07-1.63 1.43-.94.83-.58.52-1.48 1.31-1.97 1.74-3.23 2.85-.61.55-1.24 1.1-.83.72-.77.68-.1.09-1.51 1.34-1.18 1.03-.43.38-.87.78-.84.74-.66.58-.06.05-.2-.18-7.31-6.19-1.14-.98-1.36-1.15-4.3-3.65-1.37-1.17-2.07-1.76-2.36-2-.98-.84-3.88-3.29-.75-.64-5.42-4.62-1.29-1.08-1.98-1.69-9.46-8.04-4.12-3.5-3.52-3h29.69v-32.98l.01-3.42v-32.71l1.32.63 2.27 1.07.89.41 1.68.79 2.36 1.11 23.93 11.25 2.4 1.13 6.88 3.24v49.36h29.75z">
+                                                    </path>
+                                                    <path
+                                                        d="M134.73 127.66l26.38 26.38m203.71-28.61l-28.61 28.61m-87.2-36.86V83.67"
+                                                        fill="none" stroke="#f9ac3e" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="8"></path>
+                                                    <path
+                                                        d="M310.85 175.88a58.46 58.46 0 00-14-19.5 63 63 0 00-16.8-11l-1.62-.71h-.06c-1-.42-2-.82-3-1.2a79 79 0 00-27.66-4.67h-1.82a72.87 72.87 0 00-13.89 1.58 58.52 58.52 0 00-9.76 3c-1.19.47-2.34 1-3.47 1.48a69.28 69.28 0 00-8.57 4.62 62.6 62.6 0 00-7.61 5.66c-.4.34-.79.7-1.18 1a70.75 70.75 0 00-6 6.14 68.52 68.52 0 00-6 8.11l-.6 1c-1.43 2.34-2.61 4.34-3.6 6.24a49.19 49.19 0 00-1.67 3.55 45.19 45.19 0 00-2 5.94l35.45 17.8a40.2 40.2 0 013.92-10 36.21 36.21 0 016.76-8.72 31.13 31.13 0 019.43-6.11 30.33 30.33 0 0111.94-2.27 31.19 31.19 0 019.52 1.36 22.78 22.78 0 019.82 6.06 24.86 24.86 0 016.36 11.19 24.36 24.36 0 01.71 5.89 31.75 31.75 0 01-.16 3.28 25.11 25.11 0 01-3.13 10.3 20.93 20.93 0 01-1.43 2.22c-1 1.33-2.06 2.7-3.27 4.11q-3.19 3.72-7.51 7.83c-.78.74-1.58 1.49-2.42 2.25a193.68 193.68 0 00-3.78 3.36q-4.33 3.94-7.78 7.58c-.74.76-1.44 1.52-2.11 2.27-1.17 1.3-2.25 2.59-3.27 3.89a58.33 58.33 0 00-5.53 8.37l-.14.27a50.33 50.33 0 00-3.24 7.4 49 49 0 00-1.49 5.06c-.41 1.71-.73 3.46-1 5.28a67 67 0 00-.58 8.8v.26L264 302.44l5.72 2.84v-15a51.33 51.33 0 01.94-10.31 34.32 34.32 0 013-8.55 41.21 41.21 0 015.65-8.22q3.62-4.17 9-9.35 5.65-5.46 10.69-11.12a75.65 75.65 0 008.8-12.08 63.25 63.25 0 006-13.86 62.26 62.26 0 00-2.84-41z"
+                                                        fill="#fbb124"></path>
+                                                    <path
+                                                        d="M270.1 322.61v8.83l-41.73-19.19v-9.18l4.48 2.02 1.68.79 2.36 1.11 23.93 11.25 2.4 1.13 6.88 3.24zm0 20.27v9.52l-41.73-19.18v-9.19l41.73 18.85zm25.77 32.61l-2.33 2.06-.14.12-.75.67-2.15 1.9-1.3 1.15-.57.5-60.27-27.71V345l41.74 18.85v8.12h17.98l7.79 3.52zm-15.7 13.88l-.13.11-.02.02-.72.64-.63.55-2.82 2.49-2.74 2.43-.09.07-51.29-23.59h6.63v-6.13l51.81 23.41zm-15.69 13.87l-1.97 1.74-3.23 2.85-.61.55-1.24 1.1-32.22-14.82-.75-.64-5.42-4.62-1.29-1.08-1.98-1.69-9.46-8.04-4.12-3.5 62.29 28.15z"
+                                                        fill="#f2f3f9"></path>
+                                                </g>
+                                            </g>
+                                        </svg> </div>
+                                    <div class="col-lg-11 pl-7">
+                                        <div class="font-xlarge text-semibold mb-3"><i>What's Next for Your
+                                                Customer?</i></div>
+                                        <div class="mb-5"> Your customer has been added. Create and send an estimate or an invoice to your customer for the items you want to sell to them. </div>
+                                        <button id="ember1006" style="width: 28%; " class="btn btn-secondary ember-view btn btn-secondary mr-3" type="button">
+                                            <!----> New Estimate
+                                        </button>
+                                        <div id="ember2816" class="dropdown ember-view btn-group"><button id="ember2817" class="dropdown-toggle ember-view btn-primary btn" style="height: 35px; margin-left: 11px;font-size: 13px;color: white; background-color: #bb3b25 !important;">
+                                                New Invoice
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

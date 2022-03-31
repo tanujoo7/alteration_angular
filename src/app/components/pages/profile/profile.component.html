@@ -1,0 +1,298 @@
+<div style="padding:40px; background-color: #e9eaed;">
+    <div id=" personal_space" class="page_head" style="margin-left: 10%;"> Profile </div>
+    <div class="profile box">
+        <div class="profile_head">
+            <div>
+                <div class="profile_pic"></div>
+                <div class="profile_name">
+                    <div>{{loginUser?.fullname}}</div>
+                    <div>{{loginUser?.email}}</div>
+                </div>
+            </div>
+            <button class="primary_btn_check edit_hide" *ngIf="!isShown" (click)="toggleShow()">Edit</button>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="updateProfile()">
+            <div class="profileinfo_form">
+                <div class="info_sec"><span>Full Name</span><span *ngIf="!isShown">{{loginUser?.fullname}} </span>
+                    <span *ngIf="isShown">
+                        <input type="text" formControlName="fullname"
+                            [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }"
+                            class=" form-control textbox profile_mode profile_editmode" data-validate="zform_field"
+                            id="profile_Fname_edit" name="fullname">
+                        <div *ngIf="submitted && f.fullname.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.fullname.errors.required">Full Name is required</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="info_sec"><span>Last Name</span><span *ngIf="!isShown">{{loginUser?.lastname}} </span>
+                    <span *ngIf="isShown">
+                        <input type="text" class=" form-control textbox profile_mode profile_editmode"
+                            formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+                            data-validate="zform_field" id="profile_Fname_edit">
+                        <div *ngIf="submitted && f.lastname.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="info_sec"><span>Nick name</span><span *ngIf="!isShown"> {{loginUser?.nickname}}</span>
+                    <span *ngIf="isShown">
+                        <input type="text" class=" form-control textbox profile_mode profile_editmode"
+                            data-validate="zform_field" formControlName="nickname"
+                            [ngClass]="{ 'is-invalid': submitted && f.nickname.errors }" id="profile_Fname_edit">
+                        <div *ngIf="submitted && f.nickname.errors" class=" errColor invalid-feedback">
+                            <div *ngIf="f.nickname.errors.required">Nick Name is required</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="info_sec"><span>Gender</span><span *ngIf="!isShown">{{loginUser?.gender}}</span>
+                    <span *ngIf="isShown">
+                        <select formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"
+                            class=" form-control textbox profile_mode profile_editmode">
+                            <option value=""> Select Gender</option>
+                            <option *ngFor="let Gender of gender" [value]="Gender.name">
+                                {{ Gender?.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.gender.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.gender.errors.required">Gender is required</div>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="info_sec"><span>Country/Region</span><span *ngIf="!isShown"> India</span>
+                    <span>
+                        <span *ngIf="isShown">
+                            <input type="text" formControlName="country"
+                                [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+                                class="  form-control textbox profile_mode profile_editmode" data-validate="zform_field"
+                                id="profile_Fname_edit" value="India"></span>
+                    <div *ngIf="submitted && f.country.errors" class="errColor invalid-feedback">
+                        <div *ngIf="f.country.errors.required">Country Name is required</div>
+                    </div>
+                    </span>
+                </div>
+
+                <div class="info_sec"><span>State</span><span *ngIf="!isShown">{{loginUser?.state}}</span>
+                    <span *ngIf="isShown">
+                        <select formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+                            class="form-control textbox profile_mode profile_editmode">
+                            <option value=""> Select state</option>
+                            <option *ngFor="let state of stateList" [value]="state.name">
+                                {{ state?.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.state.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.state.errors.required">State is required</div>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="info_sec"><span>Language</span><span *ngIf="!isShown">English</span>
+                    <span *ngIf="isShown">
+                        <input type="text" formControlName="language"
+                            [ngClass]="{ 'is-invalid': submitted && f.language.errors }"
+                            class=" form-control  textbox profile_mode profile_editmode" data-validate="zform_field"
+                            id="profile_Fname_edit"></span>
+                    <div *ngIf="submitted && f.language.errors" class="errColor invalid-feedback">
+                        <div *ngIf="f.language.errors.required">Language is required</div>
+                    </div>
+                </div>
+                <div class="info_sec"><span>Time Zone</span><span *ngIf="!isShown">(+5:30) India Standard Time (
+                        Asia/Kolkata ) </span>
+                    <span *ngIf="isShown">
+                        <input type="text" formControlName="time"
+                            [ngClass]="{ 'is-invalid': submitted && f.time.errors }"
+                            class=" form-control  textbox profile_mode profile_editmode" data-validate="zform_field"
+                            id="profile_Fname_edit">
+                        <div *ngIf="submitted && f.time.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.time.errors.required">Time zone is required</div>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="" *ngIf="isShown">
+                    <div id="savebtnid" style="display: block;">
+                        <button style="cursor: pointer;" class="pref_disable_btn primary_btn_check" type="submit"><span>Save</span></button>
+                        <button style="cursor: pointer;" class="primary_btn_check high_cancel" tabindex="0" (click)="togglehide()" id="undo_changes"><span>Cancel</span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class=" email_add box">
+        <div class="box_info">
+            <div class="box_head">My Email Addresses</div>
+            <div class="box_discrption">View and manage all of the email addresses associated with your account.
+            </div>
+        </div>
+        <div class="field_email primary" id="emailID_num_0" onclick="">
+            <span class="email_dp icon-email dp_green dp_blue_lt"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </span>
+            <span class="email_info">
+                <div id="primary_emailid" class="emailaddress_text">{{loginUser?.email}}</div>
+                <!-- <div id="PrimConfim" class="hide red emailaddress_addredtime">Unconfirmed</div>--->
+                <div id="prim_em_time" class="emailaddress_addredtime">{{catchDate(loginUser?.createdAt)}} days ago
+                </div>
+                <!--<div class="emailaddress_addredtime primary_dot" title="Primary">Primary Email Address</div> -->
+            </span>
+
+            <span class="profile_tags primary_tag icon-Primary"><i class="fa fa-rocket" aria-hidden="true"></i>
+                <span class=" tooltiptext tooltiptext1">
+                    <span class="profile_tags primary_tag icon-Primary profile_tags_tooltip_icon"><i
+                            class="fa fa-rocket" aria-hidden="true"></i>
+                    </span>
+            <span class="profile_tags_tooltip_heading">Primary Email Address</span>
+            <span class="profile_tags_tooltip_desc"> You can use this email address to sign in
+                        to your Zoho
+                        account.
+                    </span>
+            </span>
+            </span>
+            <span class="profile_tags recovery_tag icon-recoveryNum"><i class="fa fa-shield" aria-hidden="true"></i>
+                <span class="tooltiptext tooltiptext3">
+                    <span class="profile_tags recovery_tag icon-recoveryNum profile_tags_tooltip_icon"><i
+                            class="fa fa-shield" aria-hidden="true"></i> </span>
+            <span class="profile_tags_tooltip_heading">Recovery Email Address</span>
+            <span class="profile_tags_tooltip_desc">You can use this email address for
+                        verification to
+                        change your Zoho account password.</span>
+            </span>
+            </span>
+        </div>
+        <div class="field_email primary" id="emailID_num_0" onclick="" *ngFor="let emailAddress of associatedEmailAddress">
+            <span class="email_dp icon-email dp_green dp_blue_lt"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </span>
+            <span class="email_info">
+                <div id="primary_emailid" class="emailaddress_text">{{emailAddress?.email}}</div>
+                <div id="prim_em_time" class="emailaddress_addredtime">{{catchDate(emailAddress?.createdAt)}} days ago
+                </div>
+            </span>
+            <span class="deleteButton" (click)="deleteEmailAddress(emailAddress)"><i class="fa fa-trash"
+                    aria-hidden="true"></i></span>
+            <!-- <span class="profile_tags primary_tag icon-Primary"><i class="fa fa-rocket" aria-hidden="true"></i>
+                <span class=" tooltiptext tooltiptext1">
+                    <span class="profile_tags primary_tag icon-Primary profile_tags_tooltip_icon"><i
+                            class="fa fa-rocket" aria-hidden="true"></i>
+                    </span>
+            <span class="profile_tags_tooltip_heading">Primary Email Address</span>
+            <span class="profile_tags_tooltip_desc"> You can use this email address to sign in
+                        to your Zoho
+                        account.
+                    </span>
+            </span>
+            </span>
+            <span class="profile_tags recovery_tag icon-recoveryNum"><i class="fa fa-shield" aria-hidden="true"></i>
+                <span class="tooltiptext tooltiptext3">
+                    <span class="profile_tags recovery_tag icon-recoveryNum profile_tags_tooltip_icon"><i
+                            class="fa fa-shield" aria-hidden="true"></i> </span>
+            <span class="profile_tags_tooltip_heading">Recovery Email Address</span>
+            <span class="profile_tags_tooltip_desc">You can use this email address for
+                        verification to
+                        change your Zoho account password.</span>
+            </span>
+            </span> -->
+        </div>
+
+        <a href="#openModal-emailaddress" (click)="toggleModalEmailAddress()"><button
+                class=" center_btn addMobileNumber" id="add_newnobackup"><span>+ Add Email Address</span></button></a>
+    </div>
+
+    <div class="mob_num box">
+        <div class="box_info">
+            <div class="box_head">My Mobile Numbers</div>
+            <div class="box_discrption">View and manage all of the mobile numbers associated with your account.
+            </div>
+        </div>
+
+        <!-- -------------------- -->
+
+        <div class="field_email primary" id="emailID_num_0" onclick="" *ngFor="let mobileNumberss of associatedMobileNumbers">
+            <span class="email_dp icon-email dp_green dp_blue_lt" style="background-color: #ff6640 !important;"><i
+                    class="fa fa-phone" aria-hidden="true"></i>
+            </span>
+            <span class="email_info">
+                <div id="primary_emailid" class="emailaddress_text">{{mobileNumberss?.mobile_number}}</div>
+                <div id="prim_em_time" class="emailaddress_addredtime">{{catchDate(mobileNumberss?.createdAt)}} days ago
+                </div>
+            </span>
+
+            <span class="deleteButton" (click)="deleteNumber(mobileNumberss)"><i class="fa fa-trash"
+                    aria-hidden="true"></i></span>
+        </div>
+
+        <!-- ----------? -->
+
+        <div id="no_phnum_add_here" class="box_content_div">
+
+            <div class="no_data no_data_SQ" *ngIf="!associatedEmailAddress"></div>
+            <a href="#openModal-phonenumber" (click)="toggleModal()"><button class="center_btn  primary_btn_check"
+                    id="add_newnobackup"><span>Add
+                        Mobile Number</span></button>
+            </a>
+
+            <button class="primary_btn_check  center_btn hide" id="addfrom_backup" onclick="show_tfa_switch_mobilescreen();" style="display: none;"><span>Add from Existing
+                    Numbers
+                </span></button>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor="rgba(0,0,0,0.4)" size="default" color="#fff" type="ball-elastic-dots" [fullScreen]="true">
+</ngx-spinner>
+
+<div *ngIf="isModal" id="openModal-phonenumber" class="modalDialog">
+    <div>
+        <div class="modal-content ">
+            <div class="popup_header ">
+                <div class="popuphead_details">
+                    <span class="popuphead_text" style="color: black;">Add Mobile Number</span>
+                </div>
+                <a href="#close" title="Close" (click)="toggleModal()" class="close no-outline">
+                    <div class="close_btn"></div>
+                </a>
+
+            </div>
+            <div class="popup_padding">
+                <form method="post" class="zform" id="phoneNumberform" [formGroup]="onlyMobileNumberForm" novalidate="" (ngSubmit)="onSubmitAddMobileNumber()" name="addphonenum">
+                    <div class="field full hide" id="empty_phonenumber" style="display: block;">
+                        <label class="textbox_label">Mobile Number</label>
+                        <input class="textbox" data-validate="zform_field" formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }" autofocus="" name="phone_input_code" autocomplete="phonenumber" id="empty_phonenumber_input_code" minlength="10"
+                            maxlength="12" data-type="phonenumber" type="tel" />
+                        <input type="hidden" id="empty_phonenumber_input" data-validate="zform_field" name="phone_input" style="background-color: white;">
+                    </div>
+                    <br>
+                    <button tabindex="0" type="submit" class="primary_btn_check" id="popup_mobile_action"><span>Add</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="openModal-emailaddress" *ngIf="isModalEmailAddress" class="modalDialog">
+    <div>
+        <div class="modal-content ">
+            <div class="popup_header ">
+                <div class="popuphead_details">
+                    <span class="popuphead_text" style="color: black;">Add Email Address</span>
+                </div>
+                <a href="#close" title="Close" (click)="toggleModalEmailAddress()" class="close no-outline">
+                    <div class="close_btn"></div>
+                </a>
+
+            </div>
+            <div class="popup_padding">
+                <form method="post" class="zform" id="emailAddressform" [formGroup]="submitEmailAddressForm" novalidate="" (ngSubmit)="onSubmitEmailAddress()" name="addemailaddress">
+                    <div class="field full hide" id="empty_emailaddress" style="display: block;">
+                        <label class="textbox_label">Enter your email address</label>
+                        <input class="textbox" data-validate="zform_field" formControlName="email_address" [ngClass]="{ 'is-invalid': submitted && f.email_address.errors }" autofocus="" name="email_address" autocomplete="emailaddress" id="empty_phonenumber_input_code" data-type="phonenumber"
+                            type="email" />
+                        <!-- <input type="hidden" id="empty_phonenumber_input" data-validate="zform_field" name="phone_input" style="background-color: white;"> -->
+                    </div>
+                    <br>
+                    <button tabindex="0" type="submit" class="primary_btn_check" id="popup_mobile_action"><span>Add</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+<div class="container_header">
+    <div class="container_header_rightside">
+        <ul>
+            <li>
+                <a href="">Products</a>
+            </li>
+            <li>
+                <select [(ngModel)]="pagination.companyId" class="search_box" (input)="onSearch(pagination.companyId)">
+                    <option *ngFor="let company of companyList" [value]="company.companyId">
+                        {{ company.name }}
+                    </option>
+                </select>
+            </li>
+            <li>
+                <a routerLink="/addProducts" style="width:10%"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container_header_leftside">
+        <ul>
+            <li class="pr-0">
+                <div class="help-line"><span> Helpline - +91 9424760344</span>
+                    <p class="help-line-text mb-0 text-right">Mon - Fri 9:00AM - 7:00PM</p>
+                </div>
+            </li>
+            <li>
+                <button id="ember262" class="btn btn-link ember-view"> <svg id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.92 506.92"
+                        class="icon icon-md align-text-bottom">
+                        <path
+                            d="M435.22 76.78A253.46 253.46 0 1076.78 435.22 253.46 253.46 0 10435.22 76.78zm-22.63 335.81A221.45 221.45 0 1199.41 99.41a221.45 221.45 0 11313.18 313.18zM347.38 276.5l-127 90.11a10 10 0 01-15.79-8.15V178.23a10 10 0 0115.79-8.16l127 90.12a10 10 0 010 16.31z"
+                            transform="translate(-2.54 -2.54)"></path>
+                    </svg>&nbsp; Getting Started </button>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div class="container_info">
+
+    <div class="dashboard_datatable" style="margin-top: 80px;">
+        <div class="dt_header">
+            <div class="dt_view">
+                <h2></h2>
+                <button style="color: #2fa3e6!important;" *ngIf="productListView" (click)="listView()"> <i
+                        class="fa fa-list-ul" aria-hidden="true"></i></button>
+                <button *ngIf="productListGrid" (click)="listView()"> <i class="fa fa-list-ul"
+                        aria-hidden="true"></i></button>
+
+                <button *ngIf="productListView" (click)="listGrid()"><i class="fa fa-th"
+                        aria-hidden="true"></i></button>
+                <button style="color: #2fa3e6!important;" *ngIf="productListGrid" (click)="listGrid()"><i
+                        class="fa fa-th" aria-hidden="true"></i></button>
+
+            </div>
+            <div class="dt_search_box">
+                <input type="text" name="search" (input)="onSearch(pagination.search)" [(ngModel)]="pagination.search"
+                    autocomplete="off" placeholder="Search by name">
+            </div>
+
+        </div>
+        <div class="dt_tb_sec" *ngIf="this.productListView">
+            <table *ngIf="itemList">
+                <tr>
+                    <th></th>
+                    <th>Image</th>
+                    <th (click)="onSort('name')">Name
+                        <span *ngIf="pagination.sort_by=='name'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th (click)="onSort('productCode')">Code
+                        <span *ngIf="pagination.sort_by=='productCode'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th (click)="onSort('length')">Length
+                        <span *ngIf="pagination.sort_by=='length'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th (click)="onSort('weight')">Weight
+                        <span *ngIf="pagination.sort_by=='weight'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th (click)="onSort('height')">Height
+                        <span *ngIf="pagination.sort_by=='height'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th (click)="onSort('price')">Price
+                        <span *ngIf="pagination.sort_by=='price'">
+                            <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png" alt=""
+                                width="20" />
+                            <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png" alt=""
+                                width="20" />
+                        </span>
+                    </th>
+                    <th>Action</th>
+                </tr>
+                <tr
+                    *ngFor="let item of itemList | paginate : { itemsPerPage: pagination.countPerPage,currentPage: pagination.page,totalItems: pagination.totalCount}; index as i;">
+                    <td>
+                        <span (click)="changeValue(i)">
+                            +
+                        </span>
+                    </td>
+                    <td><img [src]="item.imgUrl" onError="this.src='/assets/images/noimage.png'" class="rounded-circle"
+                            alt="image" width="50" height="50"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.productCode}}</td>
+                    <td>{{item.length}}</td>
+                    <td>{{item.weight}}</td>
+                    <td>{{item.height}}</td>
+                    <td>{{item.price}}</td>
+                    <td class="tb_btn_sec">
+                        <a (click)="gotoupdateProduct(item)" class="table_btn"><img src="/assets/images/edit.png"
+                                alt=""></a>
+                        <a (click)="open(item)" class="table_btn openmodale"><img src="/assets/images/delete.png"
+                                alt=""></a>
+                        <!-- <p><a  (click)="open()" class="table_btn openmodale">Open Login Box</a></p> -->
+
+                    </td>
+                    <td *ngIf="hideme[i]">
+                        <table>
+                            <tr>
+                                <th (click)="onSort('units')">units
+                                    <span *ngIf="pagination.sort_by=='units'">
+                                        <img *ngIf="pagination.sort_direction=='ASC'"
+                                            src="/assets/images/ico-sort-down.png" alt="" width="20" />
+                                        <img *ngIf="pagination.sort_direction=='DESC'"
+                                            src="/assets/images/ico-sort-up.png" alt="" width="20" />
+                                    </span>
+                                </th>
+                                <th (click)="onSort('process')">process
+                                    <span *ngIf="pagination.sort_by=='process'">
+                                        <img *ngIf="pagination.sort_direction=='ASC'"
+                                            src="/assets/images/ico-sort-down.png" alt="" width="20" />
+                                        <img *ngIf="pagination.sort_direction=='DESC'"
+                                            src="/assets/images/ico-sort-up.png" alt="" width="20" />
+                                    </span>
+                                </th>
+                                <th (click)="onSort('width')">width
+                                    <span *ngIf="pagination.sort_by=='width'">
+                                        <img *ngIf="pagination.sort_direction=='ASC'"
+                                            src="/assets/images/ico-sort-down.png" alt="" width="20" />
+                                        <img *ngIf="pagination.sort_direction=='DESC'"
+                                            src="/assets/images/ico-sort-up.png" alt="" width="20" />
+                                    </span>
+                                </th>
+                                <th (click)="onSort('diameter')">diameter
+                                    <span *ngIf="pagination.sort_by=='diameter'">
+                                        <img *ngIf="pagination.sort_direction=='ASC'"
+                                            src="/assets/images/ico-sort-down.png" alt="" width="20" />
+                                        <img *ngIf="pagination.sort_direction=='DESC'"
+                                            src="/assets/images/ico-sort-up.png" alt="" width="20" />
+                                    </span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>{{item.diameter}}</td>
+                                <td>{{item.width}}</td>
+                                <td>{{item.units}}</td>
+                                <td>{{item.process}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grid_sec" id="grid_sec" *ngIf="this.productListGrid">
+            <div class="grid_card"
+                *ngFor="let item of itemList | paginate : { itemsPerPage: pagination.countPerPage,currentPage: pagination.page,totalItems: pagination.totalCount}">
+                <a (click)="gotoupdateProduct(item)">
+                    <div class="grid_card_img">
+                        <img [src]="item.imgUrl" onError="this.src='/assets/images/noimage.png'" class="rounded-circle"
+                            alt="image" width="50" height="50">
+                    </div>
+                    <div class="card_content">
+                        <div><strong>Name :</strong> <span>{{item.name}}</span></div>
+                        <div><strong>Product Code :</strong> <span>{{item.productCode}}</span></div>
+                        <div><strong>Length :</strong> <span>{{item.length}}</span></div>
+                        <div><strong>Width :</strong> <span>{{item.weight}}</span></div>
+                        <div><strong>Height :</strong> <span>{{item.height}}</span></div>
+                        <div><strong>Price :</strong> <span>{{item.price}}</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div *ngIf="pagination.totalCount / pagination.countPerPage > 1" class="dt_btns">
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modale" aria-hidden="true" *ngIf="proData">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h2>Delete</h2>
+            <a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
+        </div>
+        <div class="modal-body">
+            <span class="">Are you sure to delete {{proData.productCode}}</span>
+        </div>
+        <div class="modal-footer">
+
+
+            <span><a (click)="delete(proData.itemId)" class="btn" id="btn_ingresar">Delete</a></span>
+        </div>
+    </div>
+</div>
+<!-- /Modal -->

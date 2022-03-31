@@ -1,0 +1,109 @@
+.parent{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+  }
+  .child{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .text-draft{
+    color: #879697;
+    font-size: 15px;
+  }
+
+  .btn-blue {
+    background-color: #268ddd;
+    color: #fff;
+}
+
+.btn {
+    width: 150px;
+    height: 30px;
+    padding: 0 !important;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #268ddd;
+    border: 1px solid #268ddd;
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 0 !important;
+}
+
+svg.icon.icon-xxs {
+    height: 8px;
+    width: 8px;
+}
+
+.banking-filter .dropdown-toggle, .font-xlarge, .uncattxns-info-icon {
+    font-size: 18px;
+}
+dl, ol, p, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.ribbon {
+    position: absolute!important;
+    top: 105px;
+    left: -2px;
+    overflow: hidden;
+    width: 96px;
+    height: 94px;
+}
+
+.ribbon-inner {
+    font-size: 10px;
+    padding: 0;
+    top: 16px;
+    left: -33px;
+    width: 108px;
+    z-index: 1;
+}
+
+.ribbon .ribbon-success {
+    background-color: #1fcd6d;
+    border-color: #18a155;
+}
+
+.ribbon .ribbon-inner {
+    text-align: center;
+    color: #fff;
+    top: 24px;
+    left: -31px;
+    width: 135px;
+    padding: 3px;
+    position: relative;
+    transform: rotate(-45deg);
+}
+
+.txt2{
+    color: #879697;
+    font-size: 13px;
+    line-height: .3;
+}
+
+.org-button :hover{
+    background-color: red !important;
+    color: #fff;
+}
+
+.user_info{
+    min-height: 50px !important;
+}

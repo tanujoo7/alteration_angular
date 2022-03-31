@@ -1,0 +1,100 @@
+<header>
+    <div class="nav_elements">
+        <div>
+            <img src="/image/zoho_logo.PNG" alt=""></div>
+        <div class="nav">
+            <!-- <ul>
+                <li>
+                    <a href="">CRM</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">Books</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">Creator</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">Flow</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">Expense</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">Recurit</a>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="">All Products</a>
+                    <p></p>
+                </li>
+
+            </ul> -->
+        </div>
+    </div>
+
+    <div class="utilities">
+        <div class="search"> <i class="fa fa-search" aria-hidden="true"></i></div>
+        <div class="accounts" style="margin-top: -1%;">
+            <a href="" routerLink="/login">Sign In</a>
+            <a href="" routerLink="/registration">Sign Up Now</a>
+        </div>
+
+    </div>
+</header>
+
+
+<div class="product-header sticky">
+    <div class="product-header-inner" style="padding: 50px 20px 0px 20px;">
+        <a class="product-logo" href="/invoice/">Alteration</a>
+        <div class="logout-text" *ngIf="showIsLogout">
+            <div class="success-image"></div>
+            <div class="log-msg">You've logged out successfully!</div>
+        </div>
+    </div>
+</div>
+
+<div class="main_container">
+
+    <div class="left_section">
+        <div class="form-container">
+            <form action="" class="contact-form" style="padding: 10px 30px !important;">
+                <div class="form-heading">Newsletter</div>
+                <div class="clr-bdr">&nbsp;</div>
+                <div class="input_parent_div">
+
+                    <div class="input_div"> <input class="form-control input-text" type="text" placeholder="Your Name"
+                            name="Contact Name" id="name">
+                    </div>
+                    <div class="input_div"> <input class="form-control input-text" type="text" placeholder="Your Email"
+                            name="Contact Name" id="name">
+                    </div>
+                </div>
+
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <div class="privacy_policy_text">
+                    <p style="margin-top:10px">By clicking <b>Send</b>, you agree to our <a href="https://www.zoho.com/privacy.html"
+                            target="_blank" rel="noopener noreferrer"><u>Privacy Policy</u></a>.</p>
+                </div>
+
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-send" style="width:36% !important;margin-bottom: 0px !important;">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right_section">
+        <div class="logout-container clearfix">
+            <section class="logout_sec">
+                <div>
+                    <a href=""><img src="assets/images/logout-banner.png" alt=""></a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>

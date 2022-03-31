@@ -1,0 +1,893 @@
+<div class="new_job_header">
+    <div class="header_first_div">
+        <h3 class="float-left" style="font-size: 1.5rem;font-weight: 500;"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xxlg align-text-bottom">
+                <path
+                    d="M352 256.1H160c-8.7 0-15.8 7.1-15.8 15.8v.3c0 8.7 7.1 15.8 15.8 15.8h192c8.7 0 15.8-7.1 15.8-15.8v-.3c0-8.7-7.1-15.8-15.8-15.8zM352 352H160c-8.7 0-15.8 7.1-15.8 15.8v.3c0 8.7 7.1 15.8 15.8 15.8h192c8.7 0 15.8-7.1 15.8-15.8v-.3c0-8.7-7.1-15.8-15.8-15.8z">
+                </path>
+                <path
+                    d="M442.9 132.3c-.2-.2-.4-.4-.6-.7l-126-126c-.2-.2-.4-.4-.7-.6-2.9-3-7-5-11.6-5H96C78.3 0 64 14.3 64 32v448c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V144c0-4.6-2-8.7-5.1-11.7zM320 54.6l73.4 73.4H336c-8.8 0-16-7.2-16-16V54.6zM416 464c0 8.8-7.2 16-16 16H112c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h168c4.4 0 8 3.6 8 8v88c0 17.7 14.3 32 32 32h88c4.4 0 8 3.6 8 8v296z">
+                </path>
+            </svg>
+            <span *ngIf="edit_job">Edit Job</span>
+            <span *ngIf="!edit_job">New Job</span>
+        </h3>
+    </div>
+    <div class="header_second_div">
+        <ul>
+            <li routerLink="/jobs">
+                <span class="close-details close-details-header float-right" data-ember-action="" data-ember-action-1754="1754" style="padding-top: 20px; cursor: pointer;"> <svg version="1.1"
+                        id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                        xml:space="preserve" class="icon icon-sm">
+                        <path
+                            d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                        </path>
+                    </svg>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="column content-column">
+    <div id="ember330" class="ember-view scroll-y noscroll-x fill body scrollbox">
+        <form class="mt-5" [formGroup]="invoiceForm" (ngSubmit)="addInvoice()">
+            <div id="org-profile" class="highlight-section">
+                <div class="form-group row" style="margin-bottom : 0px;background-color:#f9f9f9; border-top: 1px solid #f1eeee; padding: 25px 0px;
+                    width: 84vw;">
+                    <div class="col-form-label col-lg-2 required" style="margin-left: 10px;">Customer Name</div>
+                    <div class="col-lg-6">
+                        <ngx-select-dropdown (change)="customerNameSelected($event)" formControlName="CustomerName" [options]="customer_name_list" [config]="config1">
+                        </ngx-select-dropdown>
+                        <div id="ember1889" (click)="showCustomerDetails_popUp_Open()" style="margin-top: 6px;" class="ember-view info-item cursor-pointer" *ngIf="showCustomerAddress"> <span class="btn-link"> <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512" class="icon align-text-bottom">
+                                    <path
+                                        d="M394.8 422h-90c-11 0-20-9-20-20s9-20 20-20h90c11 0 20 9 20 20s-9 20-20 20zm97-145h-187c-11 0-20-9-20-20s9-20 20-20h187c11 0 20 9 20 20s-9 20-20 20zm0-145h-187c-11 0-20-9-20-20s9-20 20-20h187c11 0 20 9 20 20s-9 20-20 20zM227.2 422c-11 0-20-9-20-20v-37.3c0-22.2-22.3-40.3-49.8-40.3H89.8c-27.4 0-49.8 18.1-49.8 40.3V402c0 11-9 20-20 20s-20-9-20-20v-37.3c0-44.3 40.3-80.3 89.8-80.3h67.6c49.5 0 89.8 36 89.8 80.3V402c0 11-8.9 20-20 20zM123.6 244.8C80.8 244.8 46 210 46 167.2s34.8-77.6 77.6-77.6 77.6 34.8 77.6 77.6-34.8 77.6-77.6 77.6zm0-115.1c-20.7 0-37.6 16.9-37.6 37.6 0 20.7 16.8 37.6 37.6 37.6s37.6-16.9 37.6-37.6c0-20.8-16.8-37.6-37.6-37.6z">
+                                    </path>
+                                </svg> <span>View Customer Details</span></span>
+                            <div id="ember1890" class="ember-view">
+                                <div id="ember1891" class="ember-view"></div>
+                            </div>
+                        </div>
+                        <div *ngIf="submitted && f.CustomerName.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.CustomerName.errors.required">Please select a customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="background-color:#f9f9f9" *ngIf="showCustomerAddress">
+                    <div class="col-lg-2"></div>
+                    <div id="ember1146" class="col-lg-3 popovercontainer address-group ember-view" *ngFor="let addr of selectedCustomerAddress; let i = index" data-test-title="billing-address-block">
+                        <ul>
+                            <li><span style="color: #777">{{i == 0? 'BILLING' : 'SHIPPING' }} ADDRESS</span> &nbsp;<span class="cursor-pointer text-muted">
+                                    <!-- <svg version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                        xml:space="preserve" class="icon icon-xsmall">
+                                        <path
+                                            d="M469.6 42.4C420.9-6.2 382.3-.2 378.1.7l-4.8 1L42.1 332.8c-3.4 3.4-5.8 7.8-6.8 12.5L1.3 506c-.6 2.8 1.9 5.3 4.7 4.7l160.7-34.1c4.7-1 9.1-3.4 12.5-6.8l331.2-331.2.9-4.9c.9-4.1 6.7-42.8-41.7-91.3zM43.2 464l20.2-95.2c.5-2.3 2.8-3.7 5.1-3 12.4 3.9 29.7 12 46.3 28.6 17.1 17.1 26 35.8 30.5 49.2.8 2.3-.6 4.7-3 5.2l-94.4 20c-2.8.6-5.3-1.9-4.7-4.8zm135.6-39.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8C121.2 355 104 345 89.4 339c-2.6-1.1-3.3-4.5-1.3-6.5l150.8-150.8 95.5-95.5c1-1 2.3-1.4 3.7-1.1 11.8 2.5 34.1 9.9 55.1 30.9 21.4 21.4 29.9 45.4 33.2 58.2.3 1.4 0 2.8-1 3.8l-95.1 95.1-151.5 151.5zm278.4-278.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8-16.5-16.5-33.7-26.5-48.3-32.5-2.6-1.1-3.3-4.5-1.3-6.5L387 33.7c.9-.9 2-1.3 3.2-1.2 9.8 1 30.3 6.6 56.5 32.8 26.2 26.2 31.8 46.8 32.8 56.5.1 1.2-.3 2.4-1.2 3.2l-21.1 21.2z">
+                                        </path>
+                                    </svg> -->
+                                </span></li>
+                            <li><strong>{{selectedCustomerName}}</strong> </li>
+                            <li><span class="">{{addr?.address_line_1}}</span></li>
+                            <li><span class="">{{addr?.address_line_2}}</span></li>
+                            <li><span>{{addr?.city}}</span></li>
+                            <li><span>{{addr?.state}} {{addr?.zipcode}}</span></li>
+                            <li><span>{{addr?.country}}</span></li>
+                            <li><span>Phone: {{addr?.phone}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="form-group row mt-25">
+                    <div class="col-form-label col-lg-2 required" style="margin-left: 10px;">Invoice#</div>
+                    <div class="col-lg-4">
+                        <input id="ember337" formControlName="InvoiceNo" [ngClass]="{ 'is-invalid': submitted && f.InvoiceNo.errors }" class="width_325 ember-text-field ember-view form-control" type="text">
+                        <div *ngIf="submitted && f.InvoiceNo.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.InvoiceNo.errors.required">Invoice is required</div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group row mt-25">
+                    <div class="col-form-label col-lg-2" style="margin-left: 10px;">Job Number</div>
+                    <div class="col-lg-4">
+                        <input id="ember337" formControlName="JobNo" [ngClass]="{ 'is-invalid': submitted && f.JobNo.errors }" class="width_325 ember-text-field ember-view form-control" type="text">
+                        <div *ngIf="submitted && f.JobNo.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.JobNo.errors.required">Job number is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-form-label col-lg-1" *ngIf="edit_job" style="margin-left: 10px;">Job Status</div>
+                    <div class="col-lg-4" style="display: flex;align-items: center;" *ngIf="edit_job">
+                        <select name="" style="padding: 8px;
+                        border: 1px solid #ced4da;
+                        border-radius: 2px;" formControlName="job_status" id="">
+                            <option value="New">
+                                New
+                            </option>
+                            <option value="Processed">
+                                Processed
+                            </option>
+                            <option value="contacted customer">
+                                Contacted Customer
+                            </option>
+                            <option value="job collected by custome">
+                                Job Collected by Customer
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row" style="margin-right: -33px;">
+                    <div class="col-form-label col-lg-2 required" style="margin-left: 10px;">Job Date</div>
+                    <div class="col-lg-3">
+                        <input class="width_325 ember-text-field ember-view form-control" style="margin-left: -3px;" formControlName="JobDate" type="date" id="start"  >
+                    </div>
+
+                    <div class="col-lg-1">
+                        <p class="form-control-plaintext">Due Date</p>
+                    </div>
+                    <div class="col-lg-2 badge-editable">
+                        <input class="ember-text-field ember-view form-control" type="date" id="start" formControlName="DueDate" style="border-style: dashed;">
+                        <div *ngIf="submitted && f.DueDate.errors" class="errColor invalid-feedback">
+                            <div *ngIf="f.DueDate.errors.required">Choose a due date on or after the invoice</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                        <p class="form-control-plaintext">Pickup Time</p>
+                    </div>
+                  
+                    <div class="col-lg-2">
+                        <input type="time" class="ember-text-field ember-view form-control"  formControlName="PickUpTime"  />
+                        <!-- <ngx-select-dropdown (change)="selectionChangedPickUpTime($event)" formControlName="PickUpTime" [options]="dropdownOptions" [config]="config">
+                        </ngx-select-dropdown> -->
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- <div class="table_header_by_grid">
+                    <div class="grid-item-header first_column_header">ITEM DETAILS</div>
+                    <div class="grid-item-header second_column_header">QUANTITY</div>
+                    <div class="grid-item-header third_column_header">RATE</div>
+                    <div class="grid-item-header fourth_column_header">AMOUNT</div>
+                </div> -->
+                <div formArrayName="items" *ngFor="let item of itemsElement.controls; let i = index;">
+                    <!-- <div [formGroupName]="i" class="table_details_by_grid">
+                        <div class="grid-item first_column">
+                            <p>{{itemsElement.controls[i].get('itemName')?.value}}</p>
+                            <textarea (click)="showItemList(item)" placeholder="Type or click to select an item." formControlName="ItemDetails" rows="2" class="zb-invoice-item-textarea borderOnlyOnHover">
+                        </textarea>
+                        </div>
+                        <div class="grid-item second_column">
+                            <input id="ember424" class="borderOnlyOnHover ember-text-field text-right ember-view form-control qty-field" formControlName="Quantity" data-integrity="line_items.0.quantity" type="number" placeholder="1.00" (change)="handleQuantityChange(item)">
+                        </div>
+                        <div class="grid-item third_column">
+                            <input id="ember427" class="borderOnlyOnHover ember-text-field text-right ember-view form-control" formControlName="Rate" name="Rate" placeholder="0.00" type="number" />
+                        </div>
+                        <div class="grid-item fourth_column">
+                            <input id="ember427" class="borderOnlyOnHover ember-text-field text-right ember-view form-control" data-integrity="line_items.0.rate" placeholder="0.00" (change)="handleAmountChange()" formControlName="Amount" type="number">
+                        </div>
+
+                        <div *ngIf="itemsElement.controls[i].get('isItemsDropdown')?.value">
+                            <div class="show_item_details_div" *ngFor="let item1 of itemList" (click)="selectedItem(item1, item)">
+                                <div class="item_heading">{{item1.name}}</div>
+                                <div class="item_rate">Rate: {{item1.sellingprice}}</div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                   
+                    <span class="action" *ngIf="itemsElement.controls[i].get('itemName')?.value" data-ember-action="" data-ember-action-977="977" (click)="cloneSelectedItem(item)">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" mar         
+width="16" height="16"
+viewBox="0 0 172 172"
+style=" fill:#000000"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#268ddd"><path d="M28.66667,14.33333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v93.16667c0,3.956 3.21067,7.16667 7.16667,7.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667v-93.16667h93.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667zM57.33333,43c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v86c0,7.91917 6.41417,14.33333 14.33333,14.33333h86c7.91917,0 14.33333,-6.41417 14.33333,-14.33333v-86c0,-7.91917 -6.41417,-14.33333 -14.33333,-14.33333zM57.33333,57.33333h86v86h-86z"></path></g></g></svg>
+                    </span>
+                   
+                   
+                        <span class="action" data-ember-action="" data-ember-action-977="977" (click)="removeAnotherItemLine(i)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="icon icon-sm icon-cancel-circled deleteItemButton" style="color: rgb(236, 62, 62)">
+                            <path
+                                d="M256 32c30.3 0 59.6 5.9 87.2 17.6 26.7 11.3 50.6 27.4 71.2 48s36.7 44.5 48 71.2c11.7 27.6 17.6 56.9 17.6 87.2s-5.9 59.6-17.6 87.2c-11.3 26.7-27.4 50.6-48 71.2s-44.5 36.7-71.2 48C315.6 474.1 286.3 480 256 480s-59.6-5.9-87.2-17.6c-26.7-11.3-50.6-27.4-71.2-48s-36.7-44.5-48-71.2C37.9 315.6 32 286.3 32 256s5.9-59.6 17.6-87.2c11.3-26.7 27.4-50.6 48-71.2s44.5-36.7 71.2-48C196.4 37.9 225.7 32 256 32m0-32C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0z">
+                            </path>
+                            <path
+                                d="M284.3 250.3l62.3-62.3c6.2-6.2 6.2-16.2 0-22.4l-.2-.2c-6.2-6.2-16.2-6.2-22.4 0l-62.3 62.3c-3.1 3.1-8.2 3.1-11.3 0L188 165.4c-6.2-6.2-16.2-6.2-22.4 0l-.2.2c-6.2 6.2-6.2 16.2 0 22.4l62.3 62.3c3.1 3.1 3.1 8.2 0 11.3L165.4 324c-6.2 6.2-6.2 16.2 0 22.4l.2.2c6.2 6.2 16.2 6.2 22.4 0l62.3-62.3c3.1-3.1 8.2-3.1 11.3 0l62.3 62.3c6.2 6.2 16.2 6.2 22.4 0l.2-.2c6.2-6.2 6.2-16.2 0-22.4l-62.3-62.3c-3-3.2-3-8.2.1-11.4z">
+                            </path>
+                        </svg></span> -->
+
+
+                </div>
+
+
+
+                <table style="border-spacing: 0px;margin-top: 50px;">
+                    <thead style="text-align: left;">
+                    <th class="" style="border-left: none;">ITEM DETAILS</th>
+                    <th class="">QUANTITY</th>
+                    <th class="">RATE</th>
+                    <th class="" style="border-right: none;">AMOUNT</th>
+                    <th class="" style="border: none;"></th>
+                    </thead>
+                    <tbody>
+                        <tr formArrayName="items" *ngFor="let item of itemsElement.controls; let i = index;" >
+                            <td style="display: flex;border-left: none;" [formGroupName]="i">
+                                <div style="display: flex; flex-direction: column;">
+                                    <svg style="width: 30px;height: 30px;" *ngIf="!itemsElement.controls[i].get('itemName')?.value" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-picture d-block m-auto">
+                                        <g width="30" height="30" fill="#ddd" >
+                                            <path d="M64 439.1V388c0-3.2 1-6.3 2.7-9l56.2-83.2c3.1-4.6 9.3-5.8 13.8-2.7l80.9 53.9c4 2.6 9.2 2.1 12.6-1.2l115.1-115.1c3.9-3.9 10.2-3.9 14.1 0l83.8 83.7c3 3 4.8 7.1 4.8 11.3v113.4c0 4.4-3.8 8-8.2 8H72c-4.4 0-8-3.6-8-8z"></path>
+                                            <circle cx="208" cy="239.1" r="48"></circle>
+                                            <path d="M0 159.1v320.5c0 17.7 14.3 32 32 32l448-.4c17.7 0 32-14.3 32-32V159.1c0-17.7-14.3-32-32-32H32c-17.7 0-32 14.3-32 32zm464 320H48c-8.8 0-16-7.2-16-16v-288c0-8.8 7.2-16 16-16h416c8.8 0 16 7.2 16 16v288c0 8.8-7.2 16-16 16z"></path>
+                                        </g>
+                                    </svg>
+                                    <img [src]="apiUrl+'/'+item?.get('imgurl')?.value" *ngIf="itemsElement.controls[i].get('itemName')?.value" style="margin-top: 10px;" width="30px" alt="">
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <span style="margin-left: 10px;">{{itemsElement.controls[i].get('itemName')?.value}}</span>
+                                    <textarea *ngIf="!itemsElement.controls[i].get('itemName')?.value" (click)="showItemList(item)" id="" style="resize: none;" rows="2" placeholder="Type or click to select an item." rows="2" class="zb-invoice-item-textarea borderOnlyOnHover"></textarea>
+                                    <textarea *ngIf="itemsElement.controls[i].get('itemName')?.value" formControlName="ItemDetails" name="ItemDetails" id="" style="resize: none;background-color: #fbfafa" rows="2" placeholder="Add a description to your item" rows="2" class="zb-invoice-item-textarea borderOnlyOnHover"></textarea>
+                                    <div *ngIf="itemsElement.controls[i].get('isItemsDropdown')?.value">
+                                        <div class="show_item_details_div" *ngFor="let item1 of itemList1" (click)="selectedItem(item1, item)">
+                                            <div class="item_heading">{{item1.name}}</div>
+                                            <div class="item_rate">Rate: {{item1.sellingprice}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td [formGroupName]="i">
+                                <input id="ember424" class="borderOnlyOnHover ember-text-field text-right ember-view form-control qty-field" formControlName="Quantity" data-integrity="line_items.0.quantity" type="number" placeholder="1.00" (change)="handleQuantityChange(item)" />
+                            </td>
+
+                            <td [formGroupName]="i">
+                                <input id="ember427" class="borderOnlyOnHover ember-text-field text-right ember-view form-control" name="Rate" placeholder="0.00" type="number" formControlName="Rate" (change)="handleRateChange(item)" />
+                            </td>
+
+                            <td style="border-right: none;text-align: right;">
+                                {{itemsElement.controls[i].get('Amount')?.value}}
+                            </td>
+                            <td style="border: none;">
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" mar         
+                                    width="16" height="16"
+                                    viewBox="0 0 172 172"
+                                    style=" fill:#000000"
+                                    *ngIf="itemsElement.controls[i].get('itemName')?.value"
+                                    (click)="cloneSelectedItem(item)"
+                                    >
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g fill="#268ddd">
+                                                <path d="M28.66667,14.33333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v93.16667c0,3.956 3.21067,7.16667 7.16667,7.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667v-93.16667h93.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667zM57.33333,43c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v86c0,7.91917 6.41417,14.33333 14.33333,14.33333h86c7.91917,0 14.33333,-6.41417 14.33333,-14.33333v-86c0,-7.91917 -6.41417,-14.33333 -14.33333,-14.33333zM57.33333,57.33333h86v86h-86z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                (click)="removeAnotherItemLine(i, item)"
+                                class="icon icon-sm icon-cancel-circled deleteItemButton" style="color: rgb(236, 62, 62)"
+                                >
+                                <path
+                                    d="M256 32c30.3 0 59.6 5.9 87.2 17.6 26.7 11.3 50.6 27.4 71.2 48s36.7 44.5 48 71.2c11.7 27.6 17.6 56.9 17.6 87.2s-5.9 59.6-17.6 87.2c-11.3 26.7-27.4 50.6-48 71.2s-44.5 36.7-71.2 48C315.6 474.1 286.3 480 256 480s-59.6-5.9-87.2-17.6c-26.7-11.3-50.6-27.4-71.2-48s-36.7-44.5-48-71.2C37.9 315.6 32 286.3 32 256s5.9-59.6 17.6-87.2c11.3-26.7 27.4-50.6 48-71.2s44.5-36.7 71.2-48C196.4 37.9 225.7 32 256 32m0-32C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0z">
+                                </path>
+                                <path
+                                    d="M284.3 250.3l62.3-62.3c6.2-6.2 6.2-16.2 0-22.4l-.2-.2c-6.2-6.2-16.2-6.2-22.4 0l-62.3 62.3c-3.1 3.1-8.2 3.1-11.3 0L188 165.4c-6.2-6.2-16.2-6.2-22.4 0l-.2.2c-6.2 6.2-6.2 16.2 0 22.4l62.3 62.3c3.1 3.1 3.1 8.2 0 11.3L165.4 324c-6.2 6.2-6.2 16.2 0 22.4l.2.2c6.2 6.2 16.2 6.2 22.4 0l62.3-62.3c3.1-3.1 8.2-3.1 11.3 0l62.3 62.3c6.2 6.2 16.2 6.2 22.4 0l.2-.2c6.2-6.2 6.2-16.2 0-22.4l-62.3-62.3c-3-3.2-3-8.2.1-11.4z">
+                                </path>
+                            </svg>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+
+                <div class="div_handle_by_grid">
+                    <div class="tile-1 add-line-item">
+                        <div class="">
+                            <button class="btn_add_another_line btn-md" type="button" data-ember-action="" data-ember-action-1613="1613" (click)="addAnotherLine()"> <svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon align-middle"
+                                    style="color: #188dfa;">
+                                    <path style="margin-top: 10px;"
+                                        d="M256 15C122.9 15 15 122.9 15 256s107.9 241 241 241 241-107.9 241-241S389.1 15 256 15zm122 263H278v100c0 12.2-9.8 22-22 22s-22-9.8-22-22V278H134c-12.2 0-22-9.8-22-22s9.8-22 22-22h100V134c0-12.2 9.8-22 22-22s22 9.8 22 22v100h100c12.2 0 22 9.8 22 22s-9.8 22-22 22z">
+                                    </path>
+                                    <path fill="#FFF"
+                                        d="M378 234H278V134c0-12.2-9.8-22-22-22s-22 9.8-22 22v100H134c-12.2 0-22 9.8-22 22s9.8 22 22 22h100v100c0 12.2 9.8 22 22 22s22-9.8 22-22V278h100c12.2 0 22-9.8 22-22s-9.8-22-22-22z">
+                                    </path>
+                                </svg> Add another line
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tile-2 billingInfoBox" style="margin-left:25px">
+                        <div class="total_Final_Row" style="margin-top: 50px;">
+                            <div class="col-lg-6 total-label">Total
+                            </div>
+                            <div class="col-lg-6 total-amount" style="text-align: end;">   {{totalAmount}}  </div>
+                        </div>
+                        <!-- <div class="totalRow" style="margin-top: 15px;">
+                            <div class="col-lg-6 total_row_first_div total_amount_heading" style="color: #777666;">Total
+                            </div>
+                            <div class="col-lg-6 total_row_second_div total_amount" style="color: #777666;">
+                              </div>
+                        </div> -->
+                        <br>
+                        <div class="include_gst_row">
+                            <div class="col-lg-4 col-sm-4 col-4 total_amount_heading" style="color: #777666">GST Included (15%)
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-4">
+                                <!-- <input id="ember1327" class="ember-text-field text-right ember-view form-control" formControlName="IncludeGST" type="number" style="width: 130px;" > -->
+                            </div>
+                            <div class="col-lg-4 total_amount" style="color: #777666;"> {{gstAmount?.toFixed(2)}} </div>
+                        </div>
+                        <br>
+                        <!-- <div class="adjustment_row" *ngIf="edit_job">
+                            <div class="col-lg-4 col-sm-4 col-4">
+                                <input id="ember1327" class="userInput ember-text-field  ember-view form-control" placeholder="Adjustment" type="text" style="width: 110px;border-style: dashed;">
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-4">
+                                <input id="ember1327" class="ember-text-field text-right ember-view form-control" formControlName="Adjustment" type="text" style="width: 100px;">
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-4 total_amount" style="color: #777666;"> 0.00 </div>
+                        </div> -->
+                        <br>
+                        <!-- <div class="total_Final_Row">
+                            <div class="col-lg-6 total-label">Total ( NZ$ )
+                            </div>
+                            <div class="col-lg-6 total-amount" style="text-align: end;"> 0.00 </div>
+                        </div> -->
+                    </div>
+                    <div class="tile-3">
+                        <div class="mb-2">Customer Notes</div>
+                        <div><textarea rows="2" id="ember449" class="ember-text-area ember-view form-control" formControlName="CustomerNotes"></textarea>
+                            <small class="form-text font-weight-light "> Will
+                                be displayed on the invoice </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="terms_and_condition_row_background">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="mb-2" style="font-size: 13px;">Terms &amp; Conditions</div>
+                            <div><textarea rows="4" placeholder="Enter the terms and conditions of your business to be displayed in your transaction" id="ember476" formControlName="TermsAndConditions" class="ember-text-area-terms-and-conditions" style="min-height: 93px;min-width: 680px; max-width: 680px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical_line"></div>
+                    <div class="col-lg-4" style="margin-top: 5px;">
+                        <p style="font-size: 12px;">Attach File(s) to Jobs</p>
+                        <button class="btn-upload btn-attachment-upload-file" type="button">
+                            <input multiple=""
+                                accept="image/gif,image/jpeg,image/png,image/bmp,application/pdf,application/doc, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/xml, text/csv, .xml, text/xml"
+                                id="upload" class="upload" (change)="uploadFile($event)" type="file">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                class="icon icon-sm align-text-top action-icons">
+                                <path
+                                    d="M446.3 270.7c-8.7 0-15.8 7.1-15.8 15.8v141.7h-349V286.6c0-8.7-7.1-15.8-15.8-15.8s-15.8 7.1-15.8 15.8v157.6c0 8.7 7.1 15.8 15.8 15.8h380.6c8.7 0 15.8-7.1 15.8-15.8V286.6c.1-8.8-7-15.9-15.8-15.9z">
+                                </path>
+                                <path
+                                    d="M267.2 56.6c-.4-.4-.8-.7-1.2-1.1-.2-.1-.4-.3-.5-.4-.2-.2-.5-.4-.7-.5-.2-.1-.4-.3-.7-.4-.2-.1-.4-.3-.7-.4-.2-.1-.5-.2-.7-.3-.2-.1-.5-.2-.7-.3-.2-.1-.5-.2-.7-.3-.3-.1-.5-.2-.8-.3-.2-.1-.5-.1-.7-.2-.3-.1-.5-.1-.8-.2-.3-.1-.6-.1-.8-.1-.2 0-.5-.1-.7-.1-.5-.1-1-.1-1.6-.1-.5 0-1 0-1.6.1-.2 0-.5.1-.7.1-.3 0-.6.1-.8.1-.3.1-.5.1-.8.2-.2.1-.5.1-.7.2-.3.1-.5.2-.8.3-.2.1-.5.2-.7.3-.2.1-.5.2-.7.3-.2.1-.5.2-.7.3-.2.1-.4.3-.7.4-.2.1-.4.3-.7.4-.3.2-.5.4-.7.5-.2.1-.3.2-.5.4-.4.3-.8.7-1.2 1.1L150.4 151c-6.2 6.2-6.2 16.2 0 22.4 6.2 6.2 16.2 6.2 22.4 0l67.3-67.3v210.7c0 8.7 7.1 15.8 15.8 15.8 8.7 0 15.8-7.1 15.8-15.8V106.1l67.3 67.3c6.2 6.2 16.2 6.2 22.4 0 6.2-6.2 6.2-16.2 0-22.4l-94.2-94.4z">
+                                </path>
+                            </svg>
+                            Upload File
+                        </button>
+                        <!-- ----- -->
+                        <!-- <span id="ember495" class="popover-container ember-view btn ml-2 mt-2 toggle-button-selected text-white cursor-pointer">
+                            <div id="ember496" class="ember-view"> <svg version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                    xml:space="preserve" class="icon icon-sm align-text-top action-icons">
+                                    <path
+                                        d="M262.4 512c-35.7 0-64.2-10.5-84.9-31.4-24.7-24.9-37.1-63.8-36.8-115.6.2-32.6-.3-248.7-1.4-268.1-.9-15.9 4.8-41.6 23.6-61.5 11.4-12 32-26.3 66-26.3 30.3 0 55.1 15.7 69.8 44.2 10.1 19.7 12.2 38.8 12.4 40.9l.1.9v.9l.5 236.9v.5c-1 19.2-15.9 47.6-53 47.6h-.7c-39.1-.4-53.7-30.4-56-46.2l-.2-1.3V179.6c0-10.2 8.3-18.5 18.5-18.5s18.5 8.3 18.5 18.5v150.5c.4 1.5 1.4 4.4 3.6 7.2s6.2 6.5 16 6.6c9.2.1 12.4-3.2 14.1-6 1.6-2.6 2.2-5.6 2.3-6.3l-.7-234.5c-.4-3-2.4-15.6-8.8-27.6-8.3-15.7-20.2-23.3-36.4-23.3-16.7 0-29.8 5-39.1 14.8-10.7 11.3-14 26.6-13.6 34 1.2 21.6 1.6 244.3 1.4 270.3-.2 41.6 8.5 71.7 26 89.3 13.5 13.6 33.2 20.4 58.7 20.4 17.2 0 31.8-5.9 43.5-17.7 18.9-18.9 30.1-53.4 30-92.2 0-19.6-.1-193.2-.1-250.9 0-10.2 8.3-18.5 18.5-18.5s18.5 8.3 18.5 18.5c0 57.6.1 231.2.1 250.8.1 49.1-14.8 92.3-40.8 118.4-18.6 18.7-42.7 28.6-69.6 28.6z">
+                                    </path>
+                                </svg> 1 </div>
+                            <div id="ember497" class="d-none popover bs-popover-bottom ember-view attachments-invoice"
+                                style="inset: 100% auto auto -175px; visibility: visible;">
+                            </div>
+                        </span> -->
+                        <!-- --- -->
+                        <p class="form-control-plaintext">
+                            <div>
+                                <div>
+                                    <div><small class="text-muted"> You can upload a maximum of 10 files, 5MB each
+                                    </small></div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="btn-toolbar fixed-actions fill-container">
+                    <button id="ember409" class="btn btn-primary ember-view" type="submit" style="width: auto; background-color: #d64830 !important;">
+                        Save
+                    </button>
+                    <button *ngIf="edit_job" id="ember409" class="btn btn-primary ember-view" type="submit" style="width: auto; background-color: #d64830 !important;">
+                        Create Invoice
+                    </button>
+                    <button routerLink="/jobs" class="btn btn-secondary" type="button" style="width:auto;">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /*************************************************************************/ -->
+<!-- <div id="ember970" class="flyout ember-view  flyout-sm">
+    <div id="ember971" class="flyout-header ember-view">
+        <div class="section header"><span class="close-details" data-ember-action="" data-ember-action-972="972"><svg
+                    version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                    xml:space="preserve" class="icon icon-xs">
+                    <path
+                        d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                    </path>
+                </svg></span>
+            <h4 class="text-semibold">Customer Details</h4>
+        </div>
+    </div>
+    <div id="ember973" class="flyout-body contextual-sidebar ember-view">
+        <div class="aliceblue-bg p-5 clearfix">
+            <div class="float-left pr-3">
+                <div class="white-bg" style="border-radius: 37px;padding: 10px;box-shadow: #1c1d530d 1px 6px 10px 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xxlg-md align-text-top">
+                        <path
+                            d="M142.1 414.3c-11.5 0-22.2-5.5-28.9-14.7-6.5-9.1-8.3-20.3-4.7-30.9 9-26.9 28.4-51.1 54.4-68.1 26.6-17.4 58.5-26.6 92-26.6s65.4 9.2 92 26.6c26.1 17 45.4 41.2 54.4 68.1 3.5 10.5 1.8 21.8-4.7 30.9-6.6 9.2-17.4 14.7-28.9 14.7H142.1z"
+                            fill="#69adff"></path>
+                        <path
+                            d="M255 245.9c-36 0-65.4-33.3-65.4-74.3S219 97.4 255 97.4c36.1 0 65.4 33.3 65.4 74.3S291 245.9 255 245.9z"
+                            fill="#1e71d6"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="float-left">
+
+                <div><strong class="font-xlarge">Mr. tanuj gehlot</strong> <span id="ember974" class="tooltip-container ember-view"><a target="_blank" rel="noreferrer noopener"
+                            href="#/contacts/781560000000016027" id="ember975" class="ember-view"> <svg id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+                                <path
+                                    d="M432 319.3c-17.7 0-32 14.3-32 32v64.3c0 15.3-19.7 32.3-48 32.3l-240 .1c-12.7 0-24.7-5-33.9-14.1C69 424.8 64 412.7 64 400V160c0-26 16.4-48 35.9-48h67.9c17.7 0 32-14.3 32-32s-14.3-32-32-32H99.9C44.8 48 0 98.2 0 160v240c0 29.8 11.7 57.9 32.9 79.1C54.1 500.3 82.2 512 112 512l240-.1c61.8 0 112-43.2 112-96.3v-64.3c0-17.7-14.3-32-32-32z">
+                                </path>
+                                <path
+                                    d="M512 52c0-28.7-23.3-52-52-52H344c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.4L202.3 261.5c-12.5 12.5-12.4 32.8.2 45.3 6.2 6.2 14.4 9.3 22.5 9.3 8.2 0 16.5-3.2 22.7-9.5L448 104.9v63.3c0 17.7 14.3 32 32 32s32-14.3 32-32V52z">
+                                </path>
+                            </svg> </a></span>
+
+                </div>
+                <div class="text-muted pt-2"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+                        <path
+                            d="M455.2 97.6H304.4v-41c0-31.3-25.4-56.7-56.7-56.7H56.6C25.3-.1-.1 25.4-.1 56.6v398.7c0 31.3 25.4 56.7 56.7 56.7h398.6c31.3 0 56.7-25.4 56.7-56.7V154.2c0-31.2-25.4-56.6-56.7-56.6zM31.9 455.3V56.6C31.9 43 43 31.9 56.6 31.9h191.1c13.6 0 24.7 11.1 24.7 24.7V480H216v-95.9c0-8.8-7.2-16-16-16h-88.6c-8.8 0-16 7.2-16 16V480H56.6c-13.6 0-24.7-11.1-24.7-24.7zm152 24.7h-56.6v-79.9h56.6V480zm296-24.7c0 13.6-11.1 24.7-24.7 24.7H304.4V129.6h150.9c13.6 0 24.7 11.1 24.7 24.7v301z">
+                        </path>
+                        <path
+                            d="M220.3 272c8.8 0 16-7.2 16-16s-7.2-16-16-16H91.9c-8.8 0-16 7.2-16 16s7.2 16 16 16h128.4zM91.9 160.4h128.5c8.8 0 16-7.2 16-16s-7.2-16-16-16H91.9c-8.8 0-16 7.2-16 16s7.1 16 16 16zm339.5 175.7h-79.7c-8.8 0-16 7.2-16 16s7.2 16 16 16h79.7c8.8 0 16-7.2 16-16s-7.1-16-16-16zm0-96.1h-79.7c-8.8 0-16 7.2-16 16s7.2 16 16 16h79.7c8.8 0 16-7.2 16-16 0-8.9-7.1-16-16-16z">
+                        </path>
+                    </svg> testing </div>
+            </div>
+        </div>
+        <div class="p-5">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="text-muted">Outstanding Receivables</div>
+                    <div class="font-xxlarge pt-2">₹0.00</div>
+                </div>
+                <div class="col-lg-5 text-right">
+                    <div class="text-muted">Unused Credits</div>
+                    <div class="font-xxlarge pt-2">₹0.00</div>
+                </div>
+            </div>
+            <div id="ember976" class="ember-view accord-title-arrow pt-5"><span id="ember977" class="collapsed ember-view accord-title text-blue cursor-pointer"> Other Details <svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        class="icon icon-xxs align-middle text-blue arrow-down">
+                        <path
+                            d="M481.6 74.4H30.4c-9.6 0-15.3 10.6-10 18.6l223.3 339.2c4.7 7.2 15.2 7.2 20 .1 39.5-58.8 184.2-274.2 227.8-339.2 5.4-7.9-.3-18.7-9.9-18.7z">
+                        </path>
+                    </svg>
+                </span>
+                <div id="ember978" class="ember-view collapse" style="">
+                    <div class="row pt-5"><label class="col-lg-5 text-muted"> Customer Type </label>
+                        <div class="col-lg-7"> Individual </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Currency Code </label>
+                        <div class="col-lg-7"> INR </div>
+                    </div>
+
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Payment Terms </label>
+                        <div class="col-lg-7"> Due on Receipt </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Website </label>
+                        <div class="col-lg-7"> <a target="_blank" rel="noopener noreferrer" href="http://tanuj.com">tanuj.com</a> </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Portal Status </label>
+                        <div class="col-lg-7"><span class="text-muted"> Disabled </span></div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Portal Language </label>
+                        <div class="col-lg-7"> English </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="mute-margin">
+        <div class="nav nav-tabs nav-tabs-dashed nav-tabs-dashed-sm"> <span class="font-xs text-uppercase cursor-pointer text-center px-4" data-ember-action="" data-ember-action-980="980"><span class="px-0 d-inline-block nav-link active">Address</span></span><span class="font-xs text-uppercase cursor-pointer text-center px-4"
+                data-ember-action="" data-ember-action-982="982"><span class="px-0 d-inline-block nav-link text-blue">Contact
+                    Persons</span></span><span class="font-xs text-uppercase cursor-pointer text-center px-4" data-ember-action="" data-ember-action-984="984"><span
+                    class="px-0 d-inline-block nav-link text-blue">Activity</span></span>
+
+        </div>
+        <div class="px-3">
+            <div class="d-none pt-5 d-block">
+
+                <div id="ember985" class="popovercontainer address-group ember-view"><span class="d-inline-block px-3 align-top"><svg version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve"
+                            class="icon text-success ">
+                            <path
+                                d="M432 512c-4.3 0-8.4-1.7-11.5-4.9l-49.2-50.8-38.7 49.5c-2.8 3.6-7.1 5.8-11.6 6.1-4.6.3-9-1.4-12.3-4.7l-52.6-52.6-51.7 52.5c-3.2 3.3-7.7 5-12.3 4.7-4.6-.3-8.9-2.5-11.7-6.1l-38.8-49.6-50.2 51c-4.6 4.6-11.5 6-17.5 3.6-6-2.5-9.9-8.3-9.9-14.8V32C64 14.4 78.4 0 96 0h320c17.6 0 32 14.4 32 32v464c0 6.5-4 12.4-10 14.8-1.9.8-4 1.2-6 1.2zm-176-96c4.2 0 8.3 1.7 11.3 4.7l44.8 44.8c3.4 3.4 9 3.1 12-.7l33.3-42.6c2.8-3.6 7.1-5.9 11.8-6.1 4.6-.2 9.1 1.5 12.3 4.8l31.1 32.1c1.3 1.3 3.4.4 3.4-1.4V48c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16v404.1c0 1.8 2.2 2.7 3.4 1.4l32.2-32.7c3.2-3.3 7.7-5 12.3-4.7s8.9 2.5 11.7 6.1l33.2 42.5c3 3.8 8.6 4.1 12 .7l43.8-44.5c3-3.2 7.1-4.9 11.4-4.9z">
+                            </path>
+                            <path
+                                d="M255 145.2c0 8.7-7.1 15.8-15.8 15.8h-64.4c-8.7 0-15.8-7.1-15.8-15.8v-.4c0-8.7 7.1-15.8 15.8-15.8h64.4c8.7 0 15.8 7.1 15.8 15.8v.4zM351 240c0 9-7.1 16-15.8 16H174.8c-8.7 0-15.8-7.1-15.8-15.8v-.3c0-8.7 7.1-15.9 15.8-15.9h160.3c8.7 0 15.9 7.2 15.9 15.9v.1zM351 304c0 9-7.1 16-15.8 16H174.8c-8.7 0-15.8-7.1-15.8-15.8v-.3c0-8.7 7.1-15.9 15.8-15.9h160.3c8.7 0 15.9 7.2 15.9 16z">
+                            </path>
+                        </svg></span> <span class="d-inline-block text-semibold text-uppercase mb-3">Billing
+                        Address</span>
+                    <div class="pl-7 mx-3">
+                        <address id="ember986" class="font-small ember-view"><strong>tanuj</strong>
+                            <div class="preserve-wrap">i-620
+                                l.i.g colony,indore
+                                india</div>
+                            <div class="preserve-wrap">i-620
+                                l.i.g colony,indore
+                                india</div>
+
+                            indore<br> Madhya Pradesh 452011<br> India<br> Phone: 9993709320<br>
+
+
+
+                        </address>
+                    </div>
+                </div>
+                <div id="ember987" class="popovercontainer address-group ember-view"><span class="d-inline-block px-3 align-top"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512" class="icon text-overdue ">
+                            <path
+                                d="M487.3 246.6l-77.5-89c-3-3.5-7.4-5.5-12.1-5.5h-65.9V60.5c0-8.8-7.2-16-16-16H36.7c-8.8 0-16 7.2-16 16v329.6c0 8.8 7.2 16 16 16h34c.4 33.9 28 61.3 62 61.3 33.9 0 61.6-27.4 62-61.3h138.9c.4 33.9 28 61.3 62 61.3 33.9 0 61.6-27.4 62-61.3h17.7c8.8 0 16-7.2 16-16v-133c0-3.9-1.4-7.6-4-10.5zM54.7 76.5h243.1c1.1 0 2 .9 2 2v293.6c0 1.1-.9 2-2 2H54.7c-1.1 0-2-.9-2-2V78.5c0-1.1.9-2 2-2zm78 359c-16.3 0-29.6-13.1-30-29.3h59.9c-.3 16.2-13.6 29.3-29.9 29.3zm262.9 0c-16.3 0-29.6-13.1-30-29.3h59.9c-.3 16.2-13.6 29.3-29.9 29.3zm61.7-61.3H333.9c-1.1 0-2-.9-2-2V184.1h57.7c.6 0 1.1.3 1.5.7l67.7 77.8c.3.4.5.8.5 1.3v108.3c0 1.1-.9 2-2 2z">
+                            </path>
+                            <path
+                                d="M376.5 216.5c-.4-.4-.9-.7-1.5-.7h-10.4c-1.1 0-2 .9-2 2v43c0 1.1.9 2 2 2h49c1.7 0 2.6-2 1.5-3.3l-38.6-43z">
+                            </path>
+                        </svg></span> <span class="d-inline-block text-semibold text-uppercase mb-3">Shipping
+                        Address</span>
+                    <div class="pl-7 mx-3">
+                        <address id="ember988" class="font-small ember-view"><strong>tanuj</strong>
+                            <div class="preserve-wrap">i-620
+                                l.i.g colony,indore
+                                india</div>
+                            <div class="preserve-wrap">i-620
+                                l.i.g colony,indore
+                                india</div>
+
+                            indore<br> Madhya Pradesh 452011<br> India<br> Phone: 9993709320<br>
+
+
+
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none pt-5 ">
+                <div id="ember989" class="ember-view cplist px-3">
+                    <div class="person row" id="781560000000016029">
+                        <div class="col-lg-2"><img src="https://secure.gravatar.com/avatar/850cf5e74f5e3110ba67b376ba0ff37e?&amp;d=mm" class="cp-pic"></div>
+                        <div class="col-lg-8 over-flow"> <strong>Mr. tanuj gehlot</strong> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs">
+                                <path
+                                    d="M512 195.6l-171.6-34.7L256 0l-84.4 160.9L0 195.6l119.5 134.1L97.8 512 256 434l158.2 78-21.7-182.3z">
+                                </path>
+                            </svg><br> gehlottanuj99@gmail.com<br>
+
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 40 40" xml:space="preserve" class="icon icon-xs">
+                                <path
+                                    d="M7.8 6.5c0-.7.1-1.3.3-1.9.2-.7.4-1.3.8-1.8.4-.7 1-1.3 1.8-1.6.5-.2 1-.4 1.5-.5.5-.1.9-.3 1.4-.3.9-.1 1.6.1 2.1 1.2.3.8.6 1.5 1 2.3.3.7.6 1.4.9 2.2.3.7.6 1.4.8 2.1.3.9.1 1.6-.8 2.3-1 .7-2.1 1.2-3.2 1.7-.1.1-.3.1-.4.1-.2.1-.3.3-.2.4.3.8.6 1.6 1 2.3.5 1 1.1 2.1 1.7 3.1.9 1.5 1.8 2.9 2.8 4.3.9 1.2 1.8 2.4 2.9 3.5.3.3.4.3.7 0 .8-.9 1.7-1.5 2.7-2.2.4-.3.8-.4 1.3-.5.6-.1 1.1.1 1.5.5.6.5 1.1 1.1 1.6 1.7 1.1 1.2 2.2 2.4 3.3 3.5.6.6.7 1.4.3 2.2-.2.4-.5.8-.8 1.2-.5.6-1.1 1.1-1.7 1.7-.4.3-.9.5-1.4.6-.4.1-.9.1-1.3.1-.7 0-1.4-.1-2.1-.3-1.6-.5-3-1.3-4.4-2.2-1.4-.9-2.6-1.9-3.8-3.1-.9-.9-1.7-1.8-2.5-2.7-.9-1.1-1.8-2.2-2.5-3.4-.7-1.1-1.3-2.1-1.9-3.3-.4-.9-.9-1.8-1.3-2.7-.3-.6-.5-1.3-.7-1.9-.2-1.1-.4-1.8-.6-2.5-.2-.7-.3-1.3-.4-2-.2-1.3-.4-3-.4-4.1z">
+                                </path>
+                            </svg> 9098838391<br> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs">
+                                <path
+                                    d="M384 0H160c-17.7 0-32 14.3-32 32v448c0 17.7 14.3 32 32 32h224c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32zM224 24h96c4.4 0 8 3.6 8 8s-3.6 8-8 8h-96c-4.4 0-8-3.6-8-8s3.6-8 8-8zm48 466c-14.3 0-26-11.7-26-26s11.7-26 26-26 26 11.7 26 26-11.7 26-26 26zm112-90c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16v320z">
+                                </path>
+                            </svg> 9993709320<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none">
+                <div class="comments-history simple-comments-history">
+                    <div class="tree-structure activities">
+                        <div>
+                            <div class="tree-node right">
+
+                                <div class="sentimental-icon-contacts">
+                                    <div id="ember995" class="ember-view">
+                                        <div class="txn-comment-icon circle-box">
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon-comment icon icon-xs align-top mt-2 ">
+                                                <path
+                                                    d="M256.7.2C116.9.2 3.1 115 3.1 255.9 3.1 323.5 29.2 385 72 430.8c-13.5 17.1-45.6 56.7-59.8 63.7-27.6 13.7 9.6 21.3 52.4 12.5 23.1-4.8 47.8-14.2 64.9-30.1 37.5 22 81 34.7 127.3 34.7 139.9 0 253.7-114.8 253.7-255.7S396.6.2 256.7.2zm0 471.5c-118 0-214.1-96.9-214.1-215.8S138.7 40.1 256.7 40.1 470.8 137 470.8 255.9s-96.1 215.8-214.1 215.8z">
+                                                </path>
+                                                <path
+                                                    d="M115.4 220.7h279.8c10.9 0 19.7-8.9 19.6-19.9 0-11-8.8-19.9-19.7-19.9H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9zM395.2 291.2H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9h279.8c10.9 0 19.6-8.9 19.6-19.9.1-11-8.7-19.9-19.6-19.9z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node-leaf" style="margin-top: -15px">
+                                    <div class="arrow"></div>
+                                    <p class="text-muted"><small>16/01/2022 04:13 PM</small></p>
+                                    <p class="text-regular">
+                                        Payments Received added
+                                    </p>
+                                    <div class="text-muted"> Payment of amount ₹4,575.00 received and applied for INV-000001 <strong>by Tanuj Gehlot</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tree-node right">
+                                <div class="sentimental-icon-contacts">
+                                    <div id="ember998" class="ember-view">
+                                        <div class="txn-comment-icon circle-box">
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon-comment icon icon-xs align-top mt-2 ">
+                                                <path
+                                                    d="M256.7.2C116.9.2 3.1 115 3.1 255.9 3.1 323.5 29.2 385 72 430.8c-13.5 17.1-45.6 56.7-59.8 63.7-27.6 13.7 9.6 21.3 52.4 12.5 23.1-4.8 47.8-14.2 64.9-30.1 37.5 22 81 34.7 127.3 34.7 139.9 0 253.7-114.8 253.7-255.7S396.6.2 256.7.2zm0 471.5c-118 0-214.1-96.9-214.1-215.8S138.7 40.1 256.7 40.1 470.8 137 470.8 255.9s-96.1 215.8-214.1 215.8z">
+                                                </path>
+                                                <path
+                                                    d="M115.4 220.7h279.8c10.9 0 19.7-8.9 19.6-19.9 0-11-8.8-19.9-19.7-19.9H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9zM395.2 291.2H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9h279.8c10.9 0 19.6-8.9 19.6-19.9.1-11-8.7-19.9-19.6-19.9z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node-leaf" style="margin-top: -15px">
+                                    <div class="arrow"></div>
+                                    <p class="text-muted"><small>16/01/2022 04:13 PM</small></p>
+                                    <p class="text-regular">
+                                        Invoice updated
+                                    </p>
+                                    <div class="text-muted"> Invoice INV-000001 marked as sent <strong>by Tanuj
+                                            Gehlot</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tree-node right">
+                                <div class="sentimental-icon-contacts">
+                                    <div id="ember1001" class="ember-view">
+                                        <div class="txn-comment-icon circle-box">
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon-comment icon icon-xs align-top mt-2 ">
+                                                <path
+                                                    d="M256.7.2C116.9.2 3.1 115 3.1 255.9 3.1 323.5 29.2 385 72 430.8c-13.5 17.1-45.6 56.7-59.8 63.7-27.6 13.7 9.6 21.3 52.4 12.5 23.1-4.8 47.8-14.2 64.9-30.1 37.5 22 81 34.7 127.3 34.7 139.9 0 253.7-114.8 253.7-255.7S396.6.2 256.7.2zm0 471.5c-118 0-214.1-96.9-214.1-215.8S138.7 40.1 256.7 40.1 470.8 137 470.8 255.9s-96.1 215.8-214.1 215.8z">
+                                                </path>
+                                                <path
+                                                    d="M115.4 220.7h279.8c10.9 0 19.7-8.9 19.6-19.9 0-11-8.8-19.9-19.7-19.9H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9zM395.2 291.2H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9h279.8c10.9 0 19.6-8.9 19.6-19.9.1-11-8.7-19.9-19.6-19.9z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node-leaf" style="margin-top: -15px">
+                                    <div class="arrow"></div>
+                                    <p class="text-muted"><small>16/01/2022 04:13 PM</small></p>
+                                    <p class="text-regular">
+                                        Invoice added
+                                    </p>
+                                    <div class="text-muted"> Invoice INV-000001 of amount ₹4,575.00 created <strong>by
+                                            Tanuj Gehlot</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tree-node right">
+                                <div class="sentimental-icon-contacts">
+                                    <div id="ember1004" class="ember-view">
+                                        <div class="txn-comment-icon circle-box">
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon-comment icon icon-xs align-top mt-2 ">
+                                                <path
+                                                    d="M256.7.2C116.9.2 3.1 115 3.1 255.9 3.1 323.5 29.2 385 72 430.8c-13.5 17.1-45.6 56.7-59.8 63.7-27.6 13.7 9.6 21.3 52.4 12.5 23.1-4.8 47.8-14.2 64.9-30.1 37.5 22 81 34.7 127.3 34.7 139.9 0 253.7-114.8 253.7-255.7S396.6.2 256.7.2zm0 471.5c-118 0-214.1-96.9-214.1-215.8S138.7 40.1 256.7 40.1 470.8 137 470.8 255.9s-96.1 215.8-214.1 215.8z">
+                                                </path>
+                                                <path
+                                                    d="M115.4 220.7h279.8c10.9 0 19.7-8.9 19.6-19.9 0-11-8.8-19.9-19.7-19.9H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9zM395.2 291.2H115.4c-10.9 0-19.7 8.9-19.7 19.9 0 11 8.8 19.9 19.7 19.9h279.8c10.9 0 19.6-8.9 19.6-19.9.1-11-8.7-19.9-19.6-19.9z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node-leaf" style="margin-top: -15px">
+                                    <div class="arrow"></div>
+                                    <p class="text-muted"><small>13/01/2022 02:50 PM</small></p>
+                                    <p class="text-regular">
+                                        Contact added
+                                    </p>
+                                    <div class="text-muted"> Contact created <strong>by Tanuj Gehlot</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="profile_info" id="myProfile" style="width: 398px !important;" *ngIf="showCustomerDetails_popUp">
+    <div class="fill user-details">
+        <div class="customer_details_header">
+            <div class="left_side" style="margin-top: 5px;">
+                Customer Details
+            </div>
+            <div class="right_side">
+                <span (click)="showCustomerDetails_popUp_Close()" class="close-details mt-3" data-ember-action="" data-ember-action-624="624">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                        xml:space="preserve" class="icon icon-xs">
+                        <path
+                            d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="row aliceblue-bg p-5 clearfix" style="margin-left: 0;margin-right: 0;  padding: 10px;">
+            <div class="float-left pr-3 col-lg-3">
+                <div class="white-bg" style="border-radius: 77px;
+                padding: 18px;box-shadow: #1c1d530d 1px 6px 10px 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xxlg-md align-text-top" style="margin-left: 0px;
+                    height: 25px !important;width: 25px !important;">
+                        <path
+                            d="M142.1 414.3c-11.5 0-22.2-5.5-28.9-14.7-6.5-9.1-8.3-20.3-4.7-30.9 9-26.9 28.4-51.1 54.4-68.1 26.6-17.4 58.5-26.6 92-26.6s65.4 9.2 92 26.6c26.1 17 45.4 41.2 54.4 68.1 3.5 10.5 1.8 21.8-4.7 30.9-6.6 9.2-17.4 14.7-28.9 14.7H142.1z"
+                            fill="#69adff"></path>
+                        <path
+                            d="M255 245.9c-36 0-65.4-33.3-65.4-74.3S219 97.4 255 97.4c36.1 0 65.4 33.3 65.4 74.3S291 245.9 255 245.9z"
+                            fill="#1e71d6"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="float-left col-lg-8" style="margin-left: -17px;margin-top: 13px;">
+                <div><strong class="font-xlarge">Mr. tanuj gehlot</strong> <span id="ember974" class="tooltip-container ember-view"><a target="_blank" rel="noreferrer noopener"
+                            href="#/contacts/781560000000016027" id="ember975" class="ember-view"> <svg id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+                                <path
+                                    d="M432 319.3c-17.7 0-32 14.3-32 32v64.3c0 15.3-19.7 32.3-48 32.3l-240 .1c-12.7 0-24.7-5-33.9-14.1C69 424.8 64 412.7 64 400V160c0-26 16.4-48 35.9-48h67.9c17.7 0 32-14.3 32-32s-14.3-32-32-32H99.9C44.8 48 0 98.2 0 160v240c0 29.8 11.7 57.9 32.9 79.1C54.1 500.3 82.2 512 112 512l240-.1c61.8 0 112-43.2 112-96.3v-64.3c0-17.7-14.3-32-32-32z">
+                                </path>
+                                <path
+                                    d="M512 52c0-28.7-23.3-52-52-52H344c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.4L202.3 261.5c-12.5 12.5-12.4 32.8.2 45.3 6.2 6.2 14.4 9.3 22.5 9.3 8.2 0 16.5-3.2 22.7-9.5L448 104.9v63.3c0 17.7 14.3 32 32 32s32-14.3 32-32V52z">
+                                </path>
+                            </svg> </a></span>
+                </div>
+                <div class="text-muted pt-2"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+                        <path
+                            d="M455.2 97.6H304.4v-41c0-31.3-25.4-56.7-56.7-56.7H56.6C25.3-.1-.1 25.4-.1 56.6v398.7c0 31.3 25.4 56.7 56.7 56.7h398.6c31.3 0 56.7-25.4 56.7-56.7V154.2c0-31.2-25.4-56.6-56.7-56.6zM31.9 455.3V56.6C31.9 43 43 31.9 56.6 31.9h191.1c13.6 0 24.7 11.1 24.7 24.7V480H216v-95.9c0-8.8-7.2-16-16-16h-88.6c-8.8 0-16 7.2-16 16V480H56.6c-13.6 0-24.7-11.1-24.7-24.7zm152 24.7h-56.6v-79.9h56.6V480zm296-24.7c0 13.6-11.1 24.7-24.7 24.7H304.4V129.6h150.9c13.6 0 24.7 11.1 24.7 24.7v301z">
+                        </path>
+                        <path
+                            d="M220.3 272c8.8 0 16-7.2 16-16s-7.2-16-16-16H91.9c-8.8 0-16 7.2-16 16s7.2 16 16 16h128.4zM91.9 160.4h128.5c8.8 0 16-7.2 16-16s-7.2-16-16-16H91.9c-8.8 0-16 7.2-16 16s7.1 16 16 16zm339.5 175.7h-79.7c-8.8 0-16 7.2-16 16s7.2 16 16 16h79.7c8.8 0 16-7.2 16-16s-7.1-16-16-16zm0-96.1h-79.7c-8.8 0-16 7.2-16 16s7.2 16 16 16h79.7c8.8 0 16-7.2 16-16 0-8.9-7.1-16-16-16z">
+                        </path>
+                    </svg> testing </div>
+            </div>
+        </div>
+        <div class="p-5">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="text-muted">Outstanding Receivables</div>
+                    <div class="font-xxlarge pt-2">₹0.00</div>
+                </div>
+                <div class="col-lg-5 text-right">
+                    <div class="text-muted">Unused Credits</div>
+                    <div class="font-xxlarge pt-2">₹0.00</div>
+                </div>
+            </div>
+            <div id="ember976" (click)="open_other_details()" class="ember-view accord-title-arrow pt-5"><span id="ember977" class="collapsed ember-view accord-title text-blue cursor-pointer"> Other Details <svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        class="icon icon-xxs align-middle text-blue arrow-down">
+                        <path
+                            d="M481.6 74.4H30.4c-9.6 0-15.3 10.6-10 18.6l223.3 339.2c4.7 7.2 15.2 7.2 20 .1 39.5-58.8 184.2-274.2 227.8-339.2 5.4-7.9-.3-18.7-9.9-18.7z">
+                        </path>
+                    </svg>
+                </span>
+                <div id="ember978" class="ember-view collapse other_details_font_size" *ngIf="show_other_details_content">
+                    <div class="row pt-5"><label class="col-lg-5 text-muted"> Customer Type </label>
+                        <div class="col-lg-7"> Individual </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Currency Code </label>
+                        <div class="col-lg-7"> INR </div>
+                    </div>
+
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Payment Terms </label>
+                        <div class="col-lg-7"> Due on Receipt </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Website </label>
+                        <div class="col-lg-7"> <a target="_blank" rel="noopener noreferrer" href="http://tanuj.com">tanuj.com</a> </div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Portal Status </label>
+                        <div class="col-lg-7"><span class="text-muted"> Disabled </span></div>
+                    </div>
+                    <div class="row pt-2"><label class="col-lg-5 text-muted"> Portal Language </label>
+                        <div class="col-lg-7"> English </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="mute-margin">
+        <div class="nav nav-tabs nav-tabs-dashed nav-tabs-dashed-sm">
+            <span class="font-xs text-uppercase cursor-pointer text-center px-4" data-ember-action="" data-ember-action-980="980" [ngClass]="show_address_details ? 'active_tab_border_bottom' : 'null'"><span class="px-0 d-inline-block nav-link text-blue" (click)="showDetails('Address')" >Address</span></span>
+            <span class="font-xs text-uppercase cursor-pointer text-center px-4" data-ember-action="" data-ember-action-982="982" [ngClass]="show_contact_person_details ? 'active_tab_border_bottom' : 'null'"><span class="px-0 d-inline-block nav-link text-blue" (click)="showDetails('Contact')">Contact
+                    Persons</span></span><span class="font-xs text-uppercase cursor-pointer text-center px-4" data-ember-action="" data-ember-action-984="984" [ngClass]="show_person_activity_details ? 'active_tab_border_bottom' : 'null'"><span class="px-0 d-inline-block nav-link text-blue"
+                    (click)="showDetails('Activity')">Activity</span></span>
+        </div>
+        <div class="Customer_details_address" *ngIf="show_address_details">
+            <ul>
+                <li><span style="color: rgb(14, 13, 13);font-weight: 600;"> <span class="d-inline-block px-3 align-top"
+                            style="color: green;"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon text-success ">
+                                <path
+                                    d="M432 512c-4.3 0-8.4-1.7-11.5-4.9l-49.2-50.8-38.7 49.5c-2.8 3.6-7.1 5.8-11.6 6.1-4.6.3-9-1.4-12.3-4.7l-52.6-52.6-51.7 52.5c-3.2 3.3-7.7 5-12.3 4.7-4.6-.3-8.9-2.5-11.7-6.1l-38.8-49.6-50.2 51c-4.6 4.6-11.5 6-17.5 3.6-6-2.5-9.9-8.3-9.9-14.8V32C64 14.4 78.4 0 96 0h320c17.6 0 32 14.4 32 32v464c0 6.5-4 12.4-10 14.8-1.9.8-4 1.2-6 1.2zm-176-96c4.2 0 8.3 1.7 11.3 4.7l44.8 44.8c3.4 3.4 9 3.1 12-.7l33.3-42.6c2.8-3.6 7.1-5.9 11.8-6.1 4.6-.2 9.1 1.5 12.3 4.8l31.1 32.1c1.3 1.3 3.4.4 3.4-1.4V48c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16v404.1c0 1.8 2.2 2.7 3.4 1.4l32.2-32.7c3.2-3.3 7.7-5 12.3-4.7s8.9 2.5 11.7 6.1l33.2 42.5c3 3.8 8.6 4.1 12 .7l43.8-44.5c3-3.2 7.1-4.9 11.4-4.9z">
+                                </path>
+                                <path
+                                    d="M255 145.2c0 8.7-7.1 15.8-15.8 15.8h-64.4c-8.7 0-15.8-7.1-15.8-15.8v-.4c0-8.7 7.1-15.8 15.8-15.8h64.4c8.7 0 15.8 7.1 15.8 15.8v.4zM351 240c0 9-7.1 16-15.8 16H174.8c-8.7 0-15.8-7.1-15.8-15.8v-.3c0-8.7 7.1-15.9 15.8-15.9h160.3c8.7 0 15.9 7.2 15.9 15.9v.1zM351 304c0 9-7.1 16-15.8 16H174.8c-8.7 0-15.8-7.1-15.8-15.8v-.3c0-8.7 7.1-15.9 15.8-15.9h160.3c8.7 0 15.9 7.2 15.9 16z">
+                                </path>
+                            </svg></span>BILLING ADDRESS</span> &nbsp;<span class="cursor-pointer text-muted">
+                    </span></li>
+                <li style="margin-left: 31px;margin-top: 11px;"><strong>tanuj</strong> </li>
+                <li class="sideMargin"><span class="">j-542 rajwada, indore</span></li>
+                <li class="sideMargin"><span class="">h-896 rajwada, indore</span></li>
+                <li class="sideMargin"><span>indore</span></li>
+                <li class="sideMargin"><span>Madhya Pradesh 452011</span></li>
+                <li class="sideMargin"><span>India</span></li>
+                <li class="sideMargin"><span>Phone: 9993709320</span></li>
+            </ul>
+            <br>
+            <ul>
+                <li>
+                    <span class="d-inline-block px-3 align-top"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512" class="icon text-overdue ">
+                            <path
+                                d="M487.3 246.6l-77.5-89c-3-3.5-7.4-5.5-12.1-5.5h-65.9V60.5c0-8.8-7.2-16-16-16H36.7c-8.8 0-16 7.2-16 16v329.6c0 8.8 7.2 16 16 16h34c.4 33.9 28 61.3 62 61.3 33.9 0 61.6-27.4 62-61.3h138.9c.4 33.9 28 61.3 62 61.3 33.9 0 61.6-27.4 62-61.3h17.7c8.8 0 16-7.2 16-16v-133c0-3.9-1.4-7.6-4-10.5zM54.7 76.5h243.1c1.1 0 2 .9 2 2v293.6c0 1.1-.9 2-2 2H54.7c-1.1 0-2-.9-2-2V78.5c0-1.1.9-2 2-2zm78 359c-16.3 0-29.6-13.1-30-29.3h59.9c-.3 16.2-13.6 29.3-29.9 29.3zm262.9 0c-16.3 0-29.6-13.1-30-29.3h59.9c-.3 16.2-13.6 29.3-29.9 29.3zm61.7-61.3H333.9c-1.1 0-2-.9-2-2V184.1h57.7c.6 0 1.1.3 1.5.7l67.7 77.8c.3.4.5.8.5 1.3v108.3c0 1.1-.9 2-2 2z">
+                            </path>
+                            <path
+                                d="M376.5 216.5c-.4-.4-.9-.7-1.5-.7h-10.4c-1.1 0-2 .9-2 2v43c0 1.1.9 2 2 2h49c1.7 0 2.6-2 1.5-3.3l-38.6-43z">
+                            </path>
+                        </svg></span>
+                    <span style="color: rgb(14, 13, 13);font-weight: 600;">SHIPPING ADDRESS</span> &nbsp;<span class="cursor-pointer text-muted">
+                    </span>
+                </li>
+                <li style="margin-left: 31px;margin-top: 11px;"><strong>tanuj</strong> </li>
+                <li class="sideMargin"><span class="">j-542 rajwada, indore</span></li>
+                <li class="sideMargin"><span class="">h-896 rajwada, indore</span></li>
+                <li class="sideMargin"><span>indore</span></li>
+                <li class="sideMargin"><span>Madhya Pradesh 452011</span></li>
+                <li class="sideMargin"><span>India</span></li>
+                <li class="sideMargin"><span>Phone: 9993709320</span></li>
+            </ul>
+        </div>
+        <div class="d-none pt-5" style="padding: 18px;" *ngIf="show_contact_person_details">
+            <div id="ember989" class="ember-view cplist px-3">
+                <div class="person row" id="781560000000016029">
+                    <div class="col-lg-2"><img src="https://secure.gravatar.com/avatar/850cf5e74f5e3110ba67b376ba0ff37e?&amp;d=mm" class="cp-pic"></div>
+                    <div class="col-lg-8 over-flow">
+                        <ul>
+                            <li> <strong>Mr. tanuj gehlot</strong> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs">
+                                    <path
+                                        d="M512 195.6l-171.6-34.7L256 0l-84.4 160.9L0 195.6l119.5 134.1L97.8 512 256 434l158.2 78-21.7-182.3z">
+                                    </path>
+                                </svg></li>
+                            <li style="margin-top: 5px;">gehlottanuj99@gmail.com</li>
+                            <li style="margin-top: 5px;"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 40 40" xml:space="preserve" class="icon icon-xs">
+                                    <path
+                                        d="M7.8 6.5c0-.7.1-1.3.3-1.9.2-.7.4-1.3.8-1.8.4-.7 1-1.3 1.8-1.6.5-.2 1-.4 1.5-.5.5-.1.9-.3 1.4-.3.9-.1 1.6.1 2.1 1.2.3.8.6 1.5 1 2.3.3.7.6 1.4.9 2.2.3.7.6 1.4.8 2.1.3.9.1 1.6-.8 2.3-1 .7-2.1 1.2-3.2 1.7-.1.1-.3.1-.4.1-.2.1-.3.3-.2.4.3.8.6 1.6 1 2.3.5 1 1.1 2.1 1.7 3.1.9 1.5 1.8 2.9 2.8 4.3.9 1.2 1.8 2.4 2.9 3.5.3.3.4.3.7 0 .8-.9 1.7-1.5 2.7-2.2.4-.3.8-.4 1.3-.5.6-.1 1.1.1 1.5.5.6.5 1.1 1.1 1.6 1.7 1.1 1.2 2.2 2.4 3.3 3.5.6.6.7 1.4.3 2.2-.2.4-.5.8-.8 1.2-.5.6-1.1 1.1-1.7 1.7-.4.3-.9.5-1.4.6-.4.1-.9.1-1.3.1-.7 0-1.4-.1-2.1-.3-1.6-.5-3-1.3-4.4-2.2-1.4-.9-2.6-1.9-3.8-3.1-.9-.9-1.7-1.8-2.5-2.7-.9-1.1-1.8-2.2-2.5-3.4-.7-1.1-1.3-2.1-1.9-3.3-.4-.9-.9-1.8-1.3-2.7-.3-.6-.5-1.3-.7-1.9-.2-1.1-.4-1.8-.6-2.5-.2-.7-.3-1.3-.4-2-.2-1.3-.4-3-.4-4.1z">
+                                    </path>
+                                </svg><span>9098838391</span></li>
+                            <li style="margin-top: 5px;"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xs">
+                                    <path
+                                        d="M384 0H160c-17.7 0-32 14.3-32 32v448c0 17.7 14.3 32 32 32h224c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32zM224 24h96c4.4 0 8 3.6 8 8s-3.6 8-8 8h-96c-4.4 0-8-3.6-8-8s3.6-8 8-8zm48 466c-14.3 0-26-11.7-26-26s11.7-26 26-26 26 11.7 26 26-11.7 26-26 26zm112-90c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16v320z">
+                                    </path>
+                                </svg><span>9993709320</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 5px;" *ngIf="show_person_activity_details">
+            No activity
+        </div>
+    </div>
+</div>

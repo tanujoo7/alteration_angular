@@ -1,0 +1,142 @@
+<header class="sign-header">
+    <p class="sidebar-header sidebar-header-us">
+        <a href="#">
+            <img class="invoice-logo" src="https://www.zoho.com/invoice/images/invoice-logo.svg" alt=""><span>
+                Alteration
+                Invoice </span>
+        </a>
+    </p>
+    <p class="sign-in" style="font-weight: 400;">
+        Already have a alteration account?
+        <a class="signin" routerLink="/login">Sign
+            In</a>
+    </p>
+</header>
+
+<section class="sidebar-container sidebar-container-us" style="z-index: 999;">
+    <div class="testimonial">
+
+        <p class="testimonial-content"> Alteration Invoice provided us with a seamless platform for managing our customers, invoices, and billing. We are truly delighted with the service and support too. Kudos to Alteration!
+        </p>
+        <div class="customer-info">
+            <div style="display:inline-block; width:16%;">
+                <!-- <img src="images/dp.jpg" alt="Profile Pic" class="customer-img"> -->
+            </div>
+            <div class="customer-details">
+                <p class="customer-name">Alexa Joy</p>
+                <p>Full Stack Developer, Innovfide Technologies</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="sidebar-footer sidebar-footer-us">
+        <h5>OTHER FINANCE PRODUCTS</h5>
+        <ul>
+            <li><a href="#">Alteration Books</a></li>
+            <li><a href="#">Alteration Expense</a></li>
+            <li><a href="#">Alteration Subscriptions</a></li>
+        </ul>
+    </div>
+</section>
+
+<div class="signup-page" id="z-access">
+    <h1 class="signup-header">Get your free account!</h1>
+    <div class="signup-container">
+        <div class="ZI-form">
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="signupform" id="signupform" class="signupform" width="" novalidate="novalidate" autocomplete="off">
+                <div class="form-grp">
+                    <input formControlName="fullname" type="text" id="namefield" class="form-field in_high" tabindex="1" placeholder="Full Name" autofocus="true" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }">
+                    <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullname.errors.required" class="errorColor">Please specify your Name</div>
+                    </div>
+                </div>
+
+                <div class="form-grp za-email-container">
+                    <input formControlName="email" type="email" class="form-field in_high" tabindex="2" autocomplete="on" placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required" class="errorColor">Email is required</div>
+                    </div>
+                </div>
+                <div class="form-grp za-password-container" style="position: relative;">
+                    <input formControlName="password" type="password" id="password" class="form-field in_high" tabindex="4" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required" class="errorColor">Password cannot be less than 8 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="form-grp">
+                    <input formControlName="companyname" type="text" id="companyName" class="form-field in_high" tabindex="5" placeholder="Company Name" [ngClass]="{ 'is-invalid': submitted && f.companyname.errors }">
+                    <div *ngIf="submitted && f.companyname.errors" class="invalid-feedback">
+                        <div *ngIf="f.companyname.errors.required" class="errorColor">Please enter your organization name
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="x_edition" name="x_edition" value="in">
+                <div class="form-grp za-country-container">
+                    <select class="form-field za-country-select" (change)="populatecountry($event)" [(ngModel)]="selectedcountry" tabindex="6" name="country" id="country">
+
+                        <option value="IN" newsletter_mode="0" *ngFor="let c of country" [value]="c.id">{{c.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="za-country_state-container form-grp">
+                    <select class="form-field" name="country_state" id="country_state" tabindex="7" [(ngModel)]="selectedState">
+                        <option *ngFor="let s of dropdownCity" [value]="s.id">{{s.name}}</option>
+                    </select>
+                </div>
+                <div style="display:none;" class="za-captcha-container">
+                    <div class="form-grp">
+                        <input type="text" placeholder="Enter Captcha" class="form-field" name="captcha" disabled="disabled">
+                        <br>
+                        <img src="about:blank" class="za-captcha" style="border:solid 1px #ccc;margin-top:2px;">
+                    </div>
+                </div>
+                <input type="hidden" id="x_feature" name="x_feature" value="">
+                <input type="hidden" id="x_plan_type" name="x_plan_type" value="">
+
+                <div class="form-grp za-tos-container" style="padding-top: 6px;">
+                    <!--   <span id="data-center-name">Your data will be in {{selectedState}} data center.</span>
+                    <span class="change-country-link tos-label" id="country-change" onclick="showCountryField()">Change
+                        Country</span> -->
+                </div>
+                <div class="form-grp za-tos-container">
+                    <label for="tos" class="tos-label">
+                        I agree to the <a style="text-decoration:underline;" href="#" id="terms-link"
+                            target="_blank">Terms of Service</a> and <a href="#" target="_blank"
+                            style="text-decoration:underline;" id="privacy-link">Privacy Policy</a>.
+                    </label>
+                    <input class="tos-checkbox" type="checkbox" id="tos" name="tos" value="false" tabindex="8">
+                </div>
+                <div class="form-grp za-newsletter-container" style="display: none;">
+                    <input type="checkbox" id="newsletter" name="newsletter" value="true" tabindex="8">
+                    <label for="newsletter"> I would like to receive marketing communication from Alteration and Zoho’s
+                        regional partners for future product updates, services and events. </label>
+                </div>
+                <div class="form-grp">
+                    <button type="submit" class="btn-signup btn btn-primary" name="za-signup-btn" id="za-signup-btn" tabindex="8" style="opacity: 1;">CREATE ACCOUNT</button>
+                </div>
+                <div class="form-grp social-signup">
+                    <p>or sign in using</p>
+                    <ul>
+                        <li><span alt="Google" title="Google" onclick="FederatedSignIn.GO('GOOGLE');zohoFedClickEvent('Google');" class="social-icon-google"></span></li>
+                        <!-- <li style="display: none;"><span alt="Yahoo" title="Yahoo"
+                                onclick="FederatedSignIn.GO('YAHOO');zohoFedClickEvent('Yahoo');"
+                                class="social-icon-yahoo"></span></li> -->
+                        <li><span alt="Facebook" title="Facebook" onclick="FederatedSignIn.GO('FACEBOOK');zohoFedClickEvent('Facebook');" class="social-icon-fb"></span></li>
+                        <li><span alt="LinkedIn" title="LinkedIn" onclick="FederatedSignIn.GO('LINKEDIN');zohoFedClickEvent('Linkedin');" class="social-icon-linkedin"></span></li>
+                        <li><span alt="Twitter" title="Twitter" onclick="FederatedSignIn.GO('TWITTER');zohoFedClickEvent('Twitter');" class="social-icon-twitter"></span></li>
+                        <!-- <li><span alt="Office365" title="Office365"
+                                onclick="FederatedSignIn.GO('AZURE');zohoFedClickEvent('Office365');"
+                                class="social-icon-windows"></span></li> -->
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(0,0,0,0.4)" size="default" color="#fff" type="ball-elastic-dots" [fullScreen]="true">
+</ngx-spinner>
+<script src="" async defer></script>

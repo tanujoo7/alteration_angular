@@ -1,0 +1,81 @@
+
+    <div class="container_header">
+        <div class="container_header_rightside">
+            <ul>
+                <li>
+                    <a href="">Users</a>
+                </li>
+                <!-- <li>
+                    <a href="" class="text-blue ">Recent Update</a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="container_header_leftside">
+            <ul>
+                <li class="pr-0">
+                    <div class="help-line"><span>  Helpline - +91 9424760344</span>
+                        <p class="help-line-text mb-0 text-right">Mon - Fri 9:00AM - 7:00PM</p>
+                    </div>
+                </li>
+                <li>
+                    <button id="ember262" class="btn btn-link ember-view"> <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.92 506.92" class="icon icon-md align-text-bottom"><path d="M435.22 76.78A253.46 253.46 0 1076.78 435.22 253.46 253.46 0 10435.22 76.78zm-22.63 335.81A221.45 221.45 0 1199.41 99.41a221.45 221.45 0 11313.18 313.18zM347.38 276.5l-127 90.11a10 10 0 01-15.79-8.15V178.23a10 10 0 0115.79-8.16l127 90.12a10 10 0 010 16.31z" transform="translate(-2.54 -2.54)"></path></svg>&nbsp; Getting Started </button>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="container_info">
+       
+        <div class="dashboard_datatable" style="margin-top: 80px;">
+            <div class="dt_header">
+                <h2></h2>
+                <div class="dt_search_box">
+                    <input type="text" name="search" (input)="onSearch()" [(ngModel)]="pagination.search" autocomplete="off"
+                        placeholder="Search by name">
+                </div>
+                
+            </div>
+            <div class="dt_tb_sec">
+                <table *ngIf="userList">
+                    <tr>
+                        <th (click)="onSort('name')">users
+                            <span *ngIf="pagination.sort_by=='name'" >
+                                <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png"
+                                    alt=""  width="20" />
+                                <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png"
+                                    alt="" width="20" />
+                            </span>
+                        </th>
+                        <th (click)="onSort('email')">Email
+                            <span *ngIf="pagination.sort_by=='email'" >
+                                <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png"
+                                    alt=""  width="20" />
+                                <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png"
+                                    alt="" width="20" />
+                            </span>
+                        </th>
+                        <th (click)="onSort('phone')">Phone
+                            <span *ngIf="pagination.sort_by=='phone'" >
+                                <img *ngIf="pagination.sort_direction=='ASC'" src="/assets/images/ico-sort-down.png"
+                                    alt=""  width="20" />
+                                <img *ngIf="pagination.sort_direction=='DESC'" src="/assets/images/ico-sort-up.png"
+                                    alt="" width="20" />
+                            </span>
+                        </th>
+                        
+                    </tr>
+                    <tr *ngFor="let user of userList | paginate : { itemsPerPage: pagination.countPerPage,currentPage: pagination.page,totalItems: pagination.totalCount}" >
+                        <td><a (click)="gotoupdateUser(user)">{{user.name}}</a></td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div *ngIf="pagination.totalCount / pagination.countPerPage > 1" class="dt_btns">
+                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+
+        </div>
+    </div>
+

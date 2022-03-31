@@ -1,0 +1,125 @@
+<div class="container_header">
+    <div class="container_header_rightside">
+        <ul>
+            <li>
+                <a href="">Edit Company</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container_header_leftside">
+        <ul>
+            <li class="pr-0">
+                <div class="help-line"><span> GST Helpline - +91 (44) 71817070</span>
+                    <p class="help-line-text mb-0 text-right">Mon - Fri 9:00AM - 7:00PM</p>
+                </div>
+            </li>
+            <li>
+                <button id="ember262" class="btn btn-link ember-view"> <svg id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.92 506.92"
+                        class="icon icon-md align-text-bottom">
+                        <path
+                            d="M435.22 76.78A253.46 253.46 0 1076.78 435.22 253.46 253.46 0 10435.22 76.78zm-22.63 335.81A221.45 221.45 0 1199.41 99.41a221.45 221.45 0 11313.18 313.18zM347.38 276.5l-127 90.11a10 10 0 01-15.79-8.15V178.23a10 10 0 0115.79-8.16l127 90.12a10 10 0 010 16.31z"
+                            transform="translate(-2.54 -2.54)"></path>
+                    </svg>&nbsp; Getting Started </button>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<!-- <div class="container_info">
+
+    <div class="add_product">
+        <div class="add_product_form">
+            <form  class="product_form" [formGroup]="update" (ngSubmit)="onSubmit()">
+                
+
+                <div class="d-flex flex-row mb-1"><span class="field_text">Name</span>
+                    <span>
+                        <input type="text" placeholder="Name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback errorMsg">
+                            <div *ngIf="f.name.errors.required ">Name is required</div>
+                        </div>
+                     </span>
+                 </div>
+                 <div class="d-flex flex-row mb-1">
+                     <span class="field_text">Email</span>
+                    <span>
+                        <input type="text" placeholder="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback errorMsg">
+                            <div *ngIf="f.email.errors.required ">Email is required</div>
+                        </div>
+                     </span>
+                 </div>
+
+                 <div class="d-flex flex-row mb-1"><span class="field_text">Phone</span>
+                    <span>
+                        <input type="text" placeholder="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback errorMsg">
+                            <div *ngIf="f.phone.errors.required ">Phone is required</div>
+                        </div>
+                     </span>
+                 </div>
+
+                <div class="d-flex flex-row mb-1">
+                    <span class="field_text"></span>
+                    <span>
+                        <button class="btn btn-primary mr-1">Update </button>
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+   
+</div> -->
+
+<div class="container_info">
+    <div class="add_product">
+        <div class="add_product_form">
+            <form  class="product_form" [formGroup]="update" (ngSubmit)="onSubmit()" class="product_form">
+                <div>
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Name</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="Name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback errorMsg">
+                                <div *ngIf="f.name.errors.required ">Name is required</div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Email</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback errorMsg">
+                                <div *ngIf="f.email.errors.required ">Email is required</div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text ">Phone</span>
+                        <span class="d-flex flex-row primary_cont">
+                            <input type="text" placeholder="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback errorMsg">
+                                <div *ngIf="f.phone.errors.required ">Phone is required</div>
+                            </div>
+                        </span>
+
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <span class="field_text "></span>
+                        <span class="d-flex flex-row primary_cont">
+                            <button class="btn btn-primary mr-1 " style="background-color: #2485e8;">Update </button>
+                            <button class="btn btn-secondary" type="reset" (click)="onReset()" style="background-color: #f5a3a3;">Cancel</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+   
+    </div>
+</div>

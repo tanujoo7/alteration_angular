@@ -1,0 +1,47 @@
+<div class="parent">
+    <div class="child" style="display:flex; flex-direction: column; width: 45vw;">
+        <div style="display:flex;">
+            <div style="width: 50%;">
+                <p class="font-xlarge">Hi, nikhil!</p>
+                <p class="text-draft mb-0" style="line-height: 1.5;">You are a part of the following organizations. Go
+                    to
+                    the organization which you
+                    wish
+                    to access now.</p>
+            </div>
+            <div style="align-self: flex-end; width: 50%; text-align: end;padding: 13px 0px;">
+                <div id="ember386" class="ember-view">
+                    <button class="btn btn-blue" data-ember-action="" data-ember-action-387="387">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+                            viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xxs" width="10">
+                            <path
+                                d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                            </path>
+                        </svg> New Organization </button>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div style="border: 1px solid #f2f2f2; height: 150px; padding: 20px!important; border-radius: 10px;">
+            <div class="ribbon">
+                <div class="ribbon-inner ribbon-success text-uppercase"> Default </div>
+            </div>
+            <div style="display: flex;">
+                <img style="    width: 110px;" src="assets/images/org_1.png" alt="">
+                <div style="padding: 8px;">
+                    <span style="font-size: 17px;">{{loginUser.company}}</span> <br /><br />
+                    <div class="txt2"> Organization created on {{loginUser.createdAt | date:"dd/MM/yyyy"}}</div><br />
+                    <div class="txt2"> Organization ID: <span style="color: black;">60009564965</span></div><br />
+                    <div class="txt2"> Edition: <span style="color: black;">India</span></div><br />
+                </div>
+                <button class="btn btn-outline-blue btn-group org-button" routerLink="/dashboard"
+                    style="position: absolute; right: 15px; background-color:#fff; color: #268ddd;     text-transform: none; font-size: 13px;">
+                    Go to
+                    Organization </button>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,453 @@
+<div id="openModal-about" class="modalDialog" *ngIf="showmodal">
+    <div class="modal-content" style="background-color: white; top: 110px;">
+        <div id="ember360" class="modal-header ember-view">
+            <a (click)="showmodal = false;" id="inviteModal" #inviteModal href="#close" title="Close" class="close no-outline"><b>&#x2715;</b></a>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img [src]="imageSrc" width="500" height="600">
+        </div>
+    </div>
+</div>
+<div class="container_header">
+    <div class="container_header_rightside">
+        <ul>
+            <li>
+                <a href="">All Items </a>
+            </li>
+            <!--  <li>
+                <a href="" class="text-blue ">Recent Update</a>
+            </li> -->
+        </ul>
+    </div>
+    <button (click)="gotoAddNewitem()" id="ember5356" class="  btn-primary" type="button" style="margin-top :0;width: 60px; color: #fff; height: 28px; padding: 0px !important; font-weight: 400; font-size: 14px !important; margin-right: 20px;">
+        <svg style="margin: 0; height: 16px; width: 10px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xsmall align-text-bottom">
+            <path
+                d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+            </path>
+        </svg>
+        New
+    </button>
+</div>
+<ngx-spinner bdColor="rgba(0,0,0,0.4)" size="default" color="#fff" type="ball-elastic-dots" [fullScreen]="true">
+</ngx-spinner>
+<table id="ember494" class="table" style="font-weight:  300;">
+    <thead>
+        <tr style="border-bottom: 1px solid #f0f0f0; ">
+            <th id="ember769" class="cursor-pointer bulk-selection-cell ember-view" style="width: 0px;">
+                <!-- <input id="ember770" class="ember-checkbox ember-view cursor-pointer" type="checkbox"
+                    aria-checked="false"> -->
+            </th>
+            <!---->
+            <th class=" text-left  sortable " style="color: #d64830!important; padding-left: 30px;font-weight: 500; width:15%">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        NAME
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">DESCRIPTION
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role">RATE
+
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class=" text-left desc sortable " style="width:18%;font-weight: 400;">
+                <div class="position-relative mr-4">
+                    <div class="float-left over-flow" title="Role"> USAGE UNIT
+                        <!---->
+                    </div><span class="sort d-print-none "></span>
+                </div>
+            </th>
+            <th class="text-left">
+                <div class="position-relative ">
+                    <div class="float-left over-flow">
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </th>
+            <!---->
+        </tr>
+    </thead>
+    <tbody *ngFor="let itemInfo of itemList">
+        <tr id="ember568" class="table-active ember-view" style="border-bottom: 1px solid #f0f0f0;">
+            <td id="ember769" class="cursor-pointer bulk-selection-cell ember-view">
+                <input id="ember770" class="ember-checkbox ember-view cursor-pointer" type="checkbox" aria-checked="false">
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%;padding-left: 30px;" (click)="mySettingsOpen(itemInfo);selectedItem = itemInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        <img *ngIf="itemInfo?.imgurl" style="width: 40px; padding-right: 10px;" src="{{apiUrl}}/{{itemInfo?.imgurl}}" />
+                        <span *ngIf="!itemInfo?.imgurl">{{itemInfo?.name}}</span>
+                        <span *ngIf="itemInfo?.imgurl">{{itemInfo?.name}}</span>
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(itemInfo);selectedItem = itemInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{itemInfo?.description}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td class=" text-left  sortable " style="font-weight: 300; width:18%" (click)="mySettingsOpen(itemInfo);selectedItem = itemInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{itemInfo?.sellingprice}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td style="vertical-align: middle;" (click)="mySettingsOpen(itemInfo);selectedItem = itemInfo;">
+                <div class="position-relative ">
+                    <div class="float-left over-flow" title="User Details">
+                        {{itemInfo?.unit}}
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+            </td>
+            <td style="width: 100%;">
+                <div id="ember772" style="display: none;">
+                    <label class="dropdown">
+                        <input type="checkbox" class="dd-input" id="test">
+                        <ul class="dd-menu" style="    position: absolute;top: 43px;left: -65px;">
+                            <li (click)="selectedItem = itemInfo; gotoAdditem(itemInfo)">Edit</li>
+                        </ul>
+                        <a style="position: absolute;right: 0; top: -5px;">
+
+                            <div> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+                                    viewBox="0 0 512 512" xml:space="preserve"
+                                    class="icon icon-xlg icon-theme-fill icon-rounded">
+                                    <path id="Oval-50_2_"
+                                        d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm118.6 246l-96.8 95.8c-6 5.9-13.9 8.9-21.8 8.9s-15.8-3-21.8-8.9L137.4 246c-8.2-8.2-8.3-21.5-.2-29.7 8.1-8.2 21.5-8.3 29.7-.2l89.1 88.1 89.1-88.1c8.2-8.2 21.5-8.1 29.7.2 8.2 8.2 8.1 21.5-.2 29.7z">
+                                    </path>
+                                </svg> </div>
+                        </a>
+
+                    </label>
+                </div>
+            </td>
+
+        </tr>
+        <!---->
+    </tbody>
+</table>
+
+<div class="profile_info" id="myProfile" *ngIf="this.settingspage" style="width: 100%; display: flex;">
+    <div style="height: 100%; width: 25%; border-right: 2px solid lightgray; border-left: 1px solid lightgray; ">
+        <div class="container_header" style="background-color: #f5f5f5;">
+            <div class="container_header_rightside">
+                <ul>
+                    <li>
+                        <a href="" style="border-bottom: 0;">All Items </a>
+                    </li>
+                    <!--  <li>
+                        <a href="" class="text-blue ">Recent Update</a>
+                    </li> -->
+                </ul>
+            </div>
+            <button (click)="gotoAddNewitem()" id="ember5356" class="  btn-primary" type="button" style="margin-top :0;width: 60px; color: #fff; height: 28px; padding: 0px !important; font-weight: 400; font-size: 14px !important; margin-right: 20px;">
+                <svg style="margin: 0; height: 16px; width: 10px;" version="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve"
+                    class="icon icon-xsmall align-text-bottom">
+                    <path
+                        d="M484 227H284V28c0-15.5-12.5-28-28-28s-28 12.5-28 28v199H28c-15.5 0-28 12.5-28 28v1c0 15.5 12.5 28 28 28h200v200c0 15.5 12.5 28 28 28s28-12.5 28-28V284h200c15.5 0 28-12.5 28-28v-1c0-15.5-12.5-28-28-28z">
+                    </path>
+                </svg>
+                New
+            </button>
+        </div>
+        <div *ngFor="let itemInfo of itemList" style="background-color: #f5f5f5; border-bottom: 1px solid #e5e5e5; ">
+            <tr id="ember568" class="table-active ember-view" style="border-bottom: 1px solid #f0f0f0;  ">
+
+                <td class=" text-left  sortable " style="font-weight: 300; width:18%;padding-left: 30px; display: flex; padding: 10px; width: 100%;" (click)="mySettingsOpen(itemInfo);selectedItem = itemInfo;">
+                    <input id="ember770" class="ember-checkbox ember-view cursor-pointer" type="checkbox" aria-checked="false">&nbsp;&nbsp;&nbsp;
+                    <div class="position-relative " style="width: 100%;">
+                        <div class="float-left over-flow" title="User Details">
+                            <!-- <span *ngIf="!itemInfo?.imgurl" style="padding-left: 42px;">{{itemInfo?.name}}</span> -->
+                            <span >{{itemInfo?.name}}</span>
+                            <!---->
+                        </div>
+                        <!---->
+                    </div>
+                </td>
+            </tr>
+            <!---->
+        </div>
+    </div>
+    <div class=" user-details" style="height: 100%; width: 75%;">
+        <div class="user-details-header">
+            <span (click)="mySettingsClose()" class="close-details mt-3" data-ember-action="" data-ember-action-624="624">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                    xml:space="preserve" class="icon icon-xs">
+                    <path
+                        d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                    </path>
+                </svg>
+            </span>
+            <div class="header no-border d-flex" style="height: 70px;">
+                <h3 class="over-flow header-title" style="padding: 0px 12px;">
+                    <div class="btn-group visible-1279-inline-block">
+                        <!-- <button class="btn btn-secondary btn-back"
+                            data-ember-action="" data-ember-action-2810="2810">
+                           <svg version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                xml:space="preserve" class="icon icon-sm align-text-bottom">
+                                <path
+                                    d="M370 508c19.3 0 28.9-23.4 15.2-37.1L167.9 255.5 385.2 40.1C398.9 26.4 389.3 3 370 3c-5.7 0-11.1 2.2-15.2 5.3L122 239.1c-8.5 9.5-8.5 23.3 0 31.8l232.8 230.9c4.1 4 9.5 6.2 15.2 6.2z"
+                                    id="Layer_2_2_"></path>
+                            </svg> 
+                        </button>-->
+                    </div>
+                    <!---->
+                    <!---->{{selectedItem?.name}}
+                </h3>
+                <div style="    margin-top: -47px;">
+                    <div class="btn-toolbar">
+                        <!---->
+                        <!--   <div class="btn-group"><button class="btn btn-secondary" data-ember-action=""
+                                data-ember-action-2811="2811">Edit</button></div> -->
+                        <div class="btn-popover-contain"> <button id="ember2812" (click)="gotoAdditem(selectedItem)" class="tooltip-container ember-view btn btn-secondary" type="button"> <svg version="1.1"
+                                    id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512"
+                                    xml:space="preserve" class="icon icon-sm align-text-bottom">
+                                    <path
+                                        d="M469.6 42.4C420.9-6.2 382.3-.2 378.1.7l-4.8 1L42.1 332.8c-3.4 3.4-5.8 7.8-6.8 12.5L1.3 506c-.6 2.8 1.9 5.3 4.7 4.7l160.7-34.1c4.7-1 9.1-3.4 12.5-6.8l331.2-331.2.9-4.9c.9-4.1 6.7-42.8-41.7-91.3zM43.2 464l20.2-95.2c.5-2.3 2.8-3.7 5.1-3 12.4 3.9 29.7 12 46.3 28.6 17.1 17.1 26 35.8 30.5 49.2.8 2.3-.6 4.7-3 5.2l-94.4 20c-2.8.6-5.3-1.9-4.7-4.8zm135.6-39.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8C121.2 355 104 345 89.4 339c-2.6-1.1-3.3-4.5-1.3-6.5l150.8-150.8 95.5-95.5c1-1 2.3-1.4 3.7-1.1 11.8 2.5 34.1 9.9 55.1 30.9 21.4 21.4 29.9 45.4 33.2 58.2.3 1.4 0 2.8-1 3.8l-95.1 95.1-151.5 151.5zm278.4-278.4c-2 2-5.4 1.3-6.5-1.3-6.5-15.6-17.1-34.3-34.6-51.8-16.5-16.5-33.7-26.5-48.3-32.5-2.6-1.1-3.3-4.5-1.3-6.5L387 33.7c.9-.9 2-1.3 3.2-1.2 9.8 1 30.3 6.6 56.5 32.8 26.2 26.2 31.8 46.8 32.8 56.5.1 1.2-.3 2.4-1.2 3.2l-21.1 21.2z">
+                                    </path>
+                                </svg> </button>
+                            <div id="ember2814" class="popover-container ember-view">
+                                <div id="ember2815" class="d-none popover bs-popover-bottom ember-view attachments-invoice pop-over-div" style="inset: 100% auto auto -315px; visibility: visible;">
+                                    <!---->
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div id="ember626" class="dropdown ember-view btn-group align-self-center ml-auto"><span id="ember627" class=" "> <label class="dropdown">
+                                    <div class="dd-button dropdown-toggle ember-view btn btn-secondary"
+                                        style="font-size: 13px;  padding-left: 6px;">
+                                        more
+                                    </div>
+                                    <input type="checkbox" class="dd-input" id="test">
+                                    <ul class="dd-menu">
+                                        <li (click)="deleteItem(selectedItem)">Delete</li>
+                                    </ul>
+                                </label> 
+                            </span>
+                        </div>
+                        <!-- <div id="ember2837" class="dropdown open ember-view btn-group"><button id="ember2838"
+                                class="dropdown-toggle ember-view btn btn-secondary"> More </button>
+                            <div id="ember1672" class="dropdown-menu show dropdown-menu-right ember-view multi-level">
+                                <button class="dropdown-item" type="button" data-ember-action=""
+                                    data-ember-action-1673="1673">Clone Item</button>
+                                <button class="dropdown-item" type="button" data-ember-action=""
+                                    data-ember-action-1675="1675">Mark as Inactive</button><button class="dropdown-item"
+                                    type="button" data-ember-action="" data-ember-action-1677="1677">Delete</button>
+                                
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-tab" style="border-bottom: '1px solid lightgray'">
+            <ul class="nav nav-tabs nav-tabs-dashed">
+                <li id="ember386" class="active ember-view nav-item">
+                    <a id="ember387" class="ember-view nav-link" [ngClass]="{'active': activetab ==='Overview'  }" (click)="setActiveTab('Overview')">Overview</a>
+                </li>
+                <li id="ember388" class="ember-view nav-item">
+                    <a id="ember389" (click)="setActiveTab('Transactions')" class="ember-view nav-link" [ngClass]="{'active': activetab ==='Transactions'  }">Transactions</a>
+                </li>
+                <li id="ember388" class="ember-view nav-item">
+                    <a id="ember389" (click)="setActiveTab('History Activities')" class="ember-view nav-link" [ngClass]="{'active': activetab ==='History Activities'  }">History
+                        Activities</a>
+                </li>
+            </ul>
+        </div>
+        <!--  <div class="scroll-y noscroll-x fill body user-details-body">
+            <div class="w-50">
+                <div class="font-large text-semibold mb-5">Custom Fields</div>
+                <p class="text-center text-muted py-7">You haven't added any custom field information.</p>
+            </div>            
+        </div> -->
+        <div class="scroll-y noscroll-x fill body scrollbox" *ngIf="activetab ==='Overview'">
+            <div class="tab-content">
+                <div class="tab-pane transactions active">
+
+                    <div class="item-details-page">
+                        <div style="display: flex;">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-5" style="padding: 0;">
+
+                                <div class="group pb-3">
+
+                                    <div class="row"><label class="col-lg-3 items-label">Item Type</label> <label class="col-lg-7">{{selectedItem?.name}}</label></div>
+
+                                </div>
+                                <div class="group">
+
+                                    <div class="row"><label class="col-lg-3 items-label">Unit</label> <label class="col-lg-7">{{selectedItem?.unit}}</label></div>
+
+                                    <div class="row"><label class="col-lg-3 items-label">Created Source</label> <label class="col-lg-6">User</label></div>
+                                    <div class="row">
+
+                                    </div>
+
+                                </div>
+                                <label class="pb-3 font-medium">Sales Information</label>
+                                <div class="group">
+                                    <div class="row"><label class="col-lg-3 items-label">Selling Price</label> <label class="col-lg-9"> $ {{selectedItem?.sellingprice}}
+
+                                        </label></div>
+
+                                    <div class="row"><label class="col-lg-3 items-label">Description</label> <label class="col-lg-9 wrap">{{selectedItem?.description}}</label></div>
+                                </div>
+
+                            </div>
+                            <div style="    margin-right: 100px;">
+                                <div style="width: 265px;" id="ember1662" class="ember-view">
+                                    <div class="image-upload item-details-image">
+                                        <div id="ember1663" class="ember-view" style="height: 100%; display: flex;align-items: center;justify-content: center; ">
+                                            <div class=" hv-centered">
+                                                <div> <svg xmlns="http://www.w3.org/2000/svg" style="height: 50px; color:gray; width:55px; " viewBox="0 0 512 512" class="icon icon-xxxlg fill-draft">
+                                                        <path
+                                                            d="M383.6 229l-.5 1.5.7 1.7c-.2-1.1-.2-2.2-.2-3.2zm-119.7-5.4l-.3 1.4.6 1.3c-.2-.8-.3-1.8-.3-2.7zm62.4 3.8l-.2 1 .5 1.1-.3-2.1z">
+                                                        </path>
+                                                        <path
+                                                            d="M483 326.2l-43.5-100.5c-3.6-8.4-10.3-14.9-18.7-18.4-8.5-3.6-17.8-3.5-26.1.1L391 209c-3.3 1.4-6.1 3.6-8.4 6.3-3.6-8.2-10.2-14.6-18.6-18-8.5-3.4-17.7-3.3-26.1.3-6.1 2.7-10.9 6.8-13.9 12-3.7-8-10.2-14.3-18.4-17.6-8.5-3.4-17.8-3.3-26.1.3l-3.7 1.6c-6.3 2.7-11.2 7.1-14.3 12.4l-20.3-46.9c-4.2-9.8-10.7-16.8-18.7-20.2-8.1-3.5-17.2-3.2-26.5.8l-3.7 1.6c-8 3.5-13.3 9.3-15.5 16.9-2.1 7.3-1 16.2 3.1 25.6l83.4 188.2-64.7-39.8c-11.2-6.8-25.7-4.7-34.4 5.1-11.3 12.5-10.3 31.9 2 43.3l55.8 51.5 50.8 43.4c17.6 16.7 38.2 28.1 59.6 32.9 7.7 1.7 15.5 2.5 23.2 2.5 14.9 0 29.7-3.1 44.2-9.4l27.9-12.1c31.2-13.5 52.8-37.1 62.6-68.4 9.2-29.2 6.6-63-7.3-95.1zM383.6 229c0 1 .1 2.1.2 3.1l-.7-1.7.5-1.4zM281.7 466.6c-.2-.2-.5-.5-.7-.6l-50.4-43.1-55.6-51.5c-7.3-6.7-7.9-18.2-1.2-25.6 4.7-5.3 12.5-6.4 18.5-2.6l65.6 40.2c4.7 2.9 10.4 2.4 14.5-1.3 4.1-3.6 5.3-9.2 3.2-14.2l-83.7-189c-3.2-7.4-3.9-13.4-2.1-18.1 1.7-4.3 5.2-6.5 7.9-7.7l3.7-1.6c12.3-5.3 22.8-.6 28.6 12.9L310.2 350c1.4 3.2 5.1 4.6 8.3 3.3 3.2-1.4 4.7-5.1 3.3-8.3l-48.7-112.5c-2.2-5.2-3-10.8-2-15.4 1.1-5.4 4.5-9.3 9.9-11.7l3.7-1.6c5.3-2.3 11.1-2.3 16.4-.2 5.3 2.2 9.5 6.3 11.8 11.6l43.9 101.5c.7 1.6 1.9 2.7 3.5 3.4 1.6.6 3.3.6 4.8-.1 3.2-1.4 4.7-5.1 3.3-8.3l-32.8-75.9c-8.2-18.9 4.8-25.6 7.5-26.8 10.8-4.7 23.5.4 28.2 11.3l28.9 66.7c1.4 3.2 5.1 4.7 8.3 3.3 3.2-1.4 4.7-5.1 3.3-8.3l-19.4-44.8c-1.3-3-4.9-13.2 3.8-16.9l3.7-1.6c5.2-2.3 11.1-2.3 16.4 0 5.3 2.3 9.6 6.4 11.9 11.8L471.7 331c12.7 29.3 15.1 59.9 6.8 86.3-8.7 27.6-27.9 48.5-55.6 60.5L395 489.9c-38.9 16.9-80.1 8.4-113.3-23.3zm44.6-239.2l.3 2.1-.5-1.1.2-1zm-62.4-3.8l.3 2.7-.6-1.3.3-1.4zM31 217c3.2 0 6-2.6 6-5.7v-40c0-3.2-2.8-5.7-6-5.7s-6 2.6-6 5.7v40c0 3.2 2.8 5.7 6 5.7zm0-66.3c3.2 0 6-2.6 6-5.7v-40c0-3.2-2.8-5.7-6-5.7s-6 2.6-6 5.7v40c0 3.1 2.8 5.7 6 5.7zM148 296h-40c-3.2 0-5.7 2.3-5.7 5.5s2.6 5.5 5.7 5.5h40c3.2 0 5.7-2.3 5.7-5.5s-2.6-5.5-5.7-5.5zM37 237.6c0-3.2-2.8-5.7-6-5.7s-6 2.6-6 5.7v40c0 3.2 2.8 5.7 6 5.7s6-2.6 6-5.7v-40zM31 84.4c3.2 0 6-2.6 6-5.7v-40c0-3.2-2.8-5.7-6-5.7s-6 2.6-6 5.7v40c0 3.1 2.8 5.7 6 5.7zM81.6 296H49.1c-1.7 0-3.4-.6-5-1.3-2.9-1.3-6.3-.1-7.5 2.8-1.3 2.9 0 6.3 2.9 7.5 3 1.3 6.3 2 9.6 2h32.5c3.2 0 5.7-2.3 5.7-5.5s-2.5-5.5-5.7-5.5zm60.6-281c3.2 0 5.7-2.8 5.7-6s-2.6-6-5.7-6h-40c-3.2 0-5.7 2.8-5.7 6s2.6 6 5.7 6h40z">
+                                                        </path>
+                                                        <path
+                                                            d="M323 122.4c-3.2 0-6 2.6-6 5.7v39.2c0 3.2 2.8 5.7 6 5.7s6-2.6 6-5.7v-39.2c0-3.1-2.8-5.7-6-5.7zm6-60.6c0-3.2-2.8-5.7-6-5.7s-6 2.6-6 5.7v40c0 3.2 2.8 5.7 6 5.7s6-2.6 6-5.7v-40zM301.2 15h3.6c6.8 0 12.2 5.6 12.2 12.4v8.1c0 3.2 2.8 5.7 6 5.7s6-2.6 6-5.7v-8.1C329 14.3 317.9 3 304.8 3h-3.6c-3.2 0-5.7 2.8-5.7 6s2.5 6 5.7 6zm-66.3 0h40c3.2 0 5.7-2.8 5.7-6s-2.6-6-5.7-6h-40c-3.2 0-5.7 2.8-5.7 6s2.5 6 5.7 6zm-60.6 292h40c3.2 0 5.7-2.3 5.7-5.5s-2.6-5.5-5.7-5.5h-40c-3.2 0-5.7 2.3-5.7 5.5s2.5 5.5 5.7 5.5zm-5.8-292h40c3.2 0 5.7-2.8 5.7-6s-2.6-6-5.7-6h-40c-3.2 0-5.7 2.8-5.7 6s2.6 6 5.7 6zM37.1 19.8c1.4 0 2.7-.6 3.8-1.5 2.3-2 5.2-3.2 8.2-3.2h26.8c3.2 0 5.7-2.8 5.7-6s-2.6-6-5.7-6H49.1c-5.9 0-11.5 2.5-15.9 6.5-2.3 2.1-2.5 5.9-.4 8.2 1.1 1.2 2.7 2 4.3 2z">
+                                                        </path>
+                                                    </svg> </div>
+                                                <div class="font-small"><label class="text-muted drag-text">Drag
+                                                        image(s)
+                                                        here or </label> <br> <span class="text-blue cursor-pointer small">Browse
+                                                        images</span></div>
+                                            </div>
+                                            <span id="upload">
+                                                <input (change)="uploadFile($event)"
+                                                    accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                                                    id="ember1664" class="upload ember-view form-control" type="file">
+                                            </span>
+                                        </div>
+                                        <div style="width: 200px; " *ngIf="imageSrc" (click)="showmodal = true;">
+                                            <img style="width: 220px;  padding-top: 10px;     position: absolute;top: 0;left: 20px;background: white; height: 180px;" [src]="imageSrc" />
+                                            <a id="viewimg" class="plusbutton" href="#openModal-about" style="width: 88%; height: 170px; margin-top: 10px;">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" style="color: white; width: 40px; height: 50px;" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-xxlg-md fill-white">
+                                                    <path
+                                                        d="M283.9 186.4h-64.6l-.4-71.1c-.1-8.8-7.2-15.9-16-15.9h-.1c-8.8.1-16 7.3-15.9 16.1l.4 70.9h-64.4c-8.8 0-16 7.2-16 16s7.2 16 16 16h64.6l.4 71.1c.1 8.8 7.2 15.9 16 15.9h.1c8.8-.1 16-7.3 15.9-16.1l-.4-70.9h64.4c8.8 0 16-7.2 16-16s-7.1-16-16-16z">
+                                                    </path>
+                                                    <path
+                                                        d="M511.3 465.3L371.2 325.2c-1-1-2.6-1-3.6 0l-11.5 11.5c31.6-35.9 50.8-82.9 50.8-134.3C406.9 90.3 315.6-1 203.4-1 91.3-1 0 90.3 0 202.4s91.3 203.4 203.4 203.4c51.4 0 98.5-19.2 134.3-50.8l-11.5 11.5c-1 1-1 2.6 0 3.6l140.1 140.1c1 1 2.6 1 3.6 0l41.4-41.4c.9-.9.9-2.5 0-3.5zm-307.9-92.5C109.5 372.8 33 296.4 33 202.4S109.5 32.1 203.4 32.1s170.4 76.4 170.4 170.4-76.4 170.3-170.4 170.3z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <div style="position: absolute; right: 10px; bottom: 5px; cursor: pointer;" (click)="removeimage()">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm">
+                                                    <path
+                                                        d="M207 415c8.8 0 16-7.2 16-16V175c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16z">
+                                                    </path>
+                                                    <path
+                                                        d="M467 63H351V11c0-6.6-5.4-12-12-12H170.9c-6.6 0-12 5.4-12 12l.1 52H43c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h20v404c0 6.6 5.4 12 12 12h360c6.6 0 12-5.4 12-12V95h20c6.6 0 12-5.4 12-12v-8c0-6.6-5.4-12-12-12zM191 31h128v32H191V31zm224 436c0 6.6-5.4 12-12 12H107c-6.6 0-12-5.4-12-12V95h320v372z">
+                                                    </path>
+                                                    <path
+                                                        d="M303 415c8.8 0 16-7.2 16-16V175c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+
+                                        <div style="width: 200px; " *ngIf="tempFile">
+                                            <img id="tempFile" style="width: 200px; padding-right: 10px; padding-top: 10px;     position: absolute;top: 0;left: 20px;background: white; height: 180px;" [src]="tempFile" />
+                                            <div style="position: absolute; right: 10px; bottom: 5px; cursor: pointer;" (click)="removeimage()">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm">
+                                                    <path
+                                                        d="M207 415c8.8 0 16-7.2 16-16V175c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16z">
+                                                    </path>
+                                                    <path
+                                                        d="M467 63H351V11c0-6.6-5.4-12-12-12H170.9c-6.6 0-12 5.4-12 12l.1 52H43c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h20v404c0 6.6 5.4 12 12 12h360c6.6 0 12-5.4 12-12V95h20c6.6 0 12-5.4 12-12v-8c0-6.6-5.4-12-12-12zM191 31h128v32H191V31zm224 436c0 6.6-5.4 12-12 12H107c-6.6 0-12-5.4-12-12V95h320v372z">
+                                                    </path>
+                                                    <path
+                                                        d="M303 415c8.8 0 16-7.2 16-16V175c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!---->
+                                    <!---->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="scroll-y noscroll-x fill body scrollbox" *ngIf="activetab ==='Transactions'" style="height: 100%;">
+            <div class="tab-content">
+                <div class="tab-pane transactions active">
+                    <div id="ember626" class="dropdown ember-view btn-group align-self-center ml-auto"><span id="ember627" class=" "> <label class="dropdown">
+                                <div class="dd-button dropdown-toggle ember-view btn btn-secondary "
+                                    style="font-size: 13px;  padding: 5px 20px 0px 10px;">
+                                    <span class="text-muted">Filter By:</span>&nbsp;Jobs
+                    </div>
+                    <input type="checkbox" class="dd-input" id="test">
+                    <ul class="dd-menu">
+                        <li>Jobs</li>
+                        <li>Invoice</li>
+                    </ul>
+                    </label>
+                    </span>
+                </div>
+                &nbsp; &nbsp;
+                <div id="ember626" class="dropdown ember-view btn-group align-self-center ml-auto"><span id="ember627" class=" "> <label class="dropdown">
+                                <div class="dd-button dropdown-toggle ember-view btn btn-secondary "
+                                    style="font-size: 13px;  padding: 5px 20px 0px 10px;">
+                                    <span class="text-muted">Status:</span>&nbsp;All
+                </div>
+                <input type="checkbox" class="dd-input" id="test">
+                <ul class="dd-menu" style="width: 110%;">
+                    <li>All</li>
+                    <li>Draft</li>
+                    <li>Sent</li>
+                    <li>Client Viewed</li>
+                    <li>Accepted</li>
+                    <li>Invoiced</li>
+                    <br />
+
+                </ul>
+                </label>
+                </span>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="scroll-y noscroll-x fill body scrollbox" *ngIf="activetab ==='History Activities'">
+</div>
+</div>
+</div>
