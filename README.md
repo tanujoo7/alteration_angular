@@ -1,2 +1,2 @@
 # alteration_angular
-copied few modules from zoho, for Local Tailor.
+This webApplication is useful for Local Tailors, for easy to use Creat,read,update,delete Operations for tailors.
